@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="">
+<meta name="description" content="mezz">
+<meta name="author" content="mezz">
+    <link  rel="stylesheet" th:href="@{/css/css.css}">
+    <link rel="stylesheet" th:href="@{/css/chosen.css}">
+
+<title>忘记密码</title>
+</head>
+<body>
+<div class="head">
+  <div class="wrap clearfix">
+  	<a th:href="@{/index}" class="logo indent">logo</a>
+    <a th:href="@{/index}"><img th:src="@{images/414.png}" align="left" width="60" height="60"/></a>
+    <div class="hanzi">食逸安美食</span></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="sign-title tc" style=" -webkit-opacity: 0.3; -moz-opacity: 0.3; -khtml-opacity: 0.3;  opacity: .3; filter:alpha(opacity=30);  ">
+    <h1>找回密码</h1>
+  </div>
+  
+  <div class="Application tc">
+    <p class="f18">请输入邮箱地址：<input type="text" value="" name="" class="inputmail"></p>
+    <div class="Release-submit"><button type="button" name="" value="" class="button btn-submit Appbtn" onClick="location.href='forgot2.html'">下一步</button></div>
+  </div>
+  
+</div>
+
+   <div style="height: 50px"> </div>
+
+  <div class="foot tc" style="padding-top: 200px;"> 
+  	   <p>关于食逸安·在食逸安工作·意见反馈·友情链接·菜谱大全·品牌馆</p>
+  	   <br />
+  	<p>北京豆果信息技术有限公司 京ICP证111032号京公网安备11010102001133号 京网文【2018】6954-770号 食品流通许可证SP1101061510252413</p>
+  </div>  
+<script th:src="@{js/jquery.js}"></script>
+<script th:src="@{js/Action.js}"></script>
+
+<script src="js/chosen.jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function($){
+	//select 样式美化
+	 var config = {
+		'.chosen-select-no-single' : {disable_search_threshold:10}
+	}
+	for (var selector in config) {
+		$(selector).chosen(config[selector]);
+	}
+});
+</script>
+</body>
+</html>

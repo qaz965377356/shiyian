@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="">
+<meta name="description" content="mezz">
+<meta name="author" content="mezz">
+<link href="css/css.css" rel="stylesheet" th:href="@{/css/css.css}">
+<link href="css/chosen.css" rel="stylesheet" th:href="@{/css/chosen.css}">
+<title>用户登录</title>
+</head>
+<body>
+<div class="head">
+  <div class="wrap clearfix">
+  	<a href="index.html" class="logo indent">logo</a>
+    <img src="images/414.png" align="left" width="60" height="60" />
+    <div class="hanzi">食逸安美食</span></div>
+  </div>
+</div>
+<div class="loginwrapper">
+  <div class="wrap pr">
+  	<img th:src="@{images/414.png}"  style="padding:15px 200px  ;"/>
+    <div class="loginbox">
+      <h1 class="hd">用户登录</h1>
+      <div class="boxbd">
+        <label class="label">
+          <input type="text" name="user" value="" class="loginipt user">
+          <span class="text">请输入您的手机号/邮箱</span>
+        </label>
+        <label class="label">
+          <input type="password" name="pwd" value="" class="loginipt pwd">
+          <span class="text">请输入您的密码</span>
+        </label>
+        <button type="submit" name="login" value="" class="button btn-login" onClick="location.href='/mem'">登录</button>
+        <p class="mt20"><label for="remember"><input name="" type="checkbox" id="remember" value="" checked> <font color="#000000">记住我</font></label><a href="/forgot" class="fr"><font color="#000000"> 忘记密码？</font></a></p>
+        <p class="mt10 tr"><font color="#000000">还没有账号？</font><a th:href="@{/reg}" class="o">注册</a></p>
+      </div>
+    </div>    
+  </div>
+</div>
+<div style="height: 100px"></div>
+  <div class="foot tc" style="padding-top: 70px;">
+  	   <p>关于食逸安·在食逸安工作·意见反馈·友情链接·菜谱大全·品牌馆</p>
+  	   <br />
+  	<p>北京豆果信息技术有限公司 京ICP证111032号京公网安备11010102001133号 京网文【2018】6954-770号 食品流通许可证SP1101061510252413</p>
+  </div>
+</body>
+<script th:src="@{js/jquery.js}"></script>
+<script th:src="@{js/Action.js}"></script>
+</html>

@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 public class Food {
     private Integer id;
     private String name;
-    private String othername;
-    private double heat;
-    private String suitable;
-    private String fooddetail;
+    private String othername;   //别名
+    private double heat;    //热量
+    private String suitable; //适宜人群
+    private String fooddetail; //食物详情
 }

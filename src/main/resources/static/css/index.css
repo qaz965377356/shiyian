@@ -270,6 +270,7 @@ line-height: 16px;}
 .ysbnt ul li{
 	width:80px;
 	height:37px;
+	background:url(../images/index_23.png) center top no-repeat;
 	line-height:30px;
 	font-size:14px;
 	color:#FFF;
@@ -282,6 +283,7 @@ line-height: 16px;}
 .ysbnt ul li:Hover{
 	width:80px;
 	height:37px;
+	background:url(../images/index_22.png) center top no-repeat;
 	line-height:30px;
 	font-size:14px;
 	color:#FFF;

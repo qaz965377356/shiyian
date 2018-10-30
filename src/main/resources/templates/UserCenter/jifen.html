@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="mezz">
+	<meta name="author" content="mezz">
+	<link  rel="stylesheet" th:href="@{/css/css.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{layui/css/layui.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{css/base.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{css/topmenu.css}"/>
+	<script type="text/javascript" th:src="@{js/jquery.js}"></script>
+	<script th:src="@{layui/layui.js}"></script>
+	<script>
+        //菜谱下拉菜单
+        $(function () {
+            $(function(){
+                $('#showscm').on('click',function(){
+                    $('#secondmenu').toggle('slow');
+                })
+            })
+        })
+	</script>
+	<title>积分</title>
+	<a class="dg-passport" id="login"></a>
+	<input type ="hidden" id="getjs" value="0">
+	<input type="hidden" name="hid_gourl" value="/u/u37425773991444.html" />
+</head>
+<body>
+<div id="header">
+	<div class="head">
+		<div class="hlogo">
+			<a title="食逸安" href="/"><img th:src="@{images/414.png}" width="45px" height="45px" style="line-height: 30px; " /></a>
+		</div>
+		<div class="tlogin" id="header_info" uid="22704506" pur="0">
+			<div class="myifo" onmouseover="overshow()" onmouseout="outshow()">
+				<a th:href="@{/personal}" target="_blank" class="plt5"><img id="imgicon" th:src="@{images/48.jpg}" alt="尤木"></a>
+				<div class="swfom r3 hidden" id="header_usermenu">
+					<span class="arwwj"> </span>
+					<p>
+						<a th:href="@{/receive}" target="_blank">提醒</a>
+						<a th:href="@{/mem.}" target="_blank">账号设置</a>
+						<a th:href="@{/login}" class="rb3" >退出</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="perinfo" style="width: 370px;">
+			<p>
+				<a th:href="@{/jifen}" target="_blank"><span class="ic_jife"></span>积分35</a>　
+				<a th:href="@{/personal4}" target="_blank" class="mr10" style="margin-right:10px;"><span class="ic_shca"></span>我的收藏</a>
+				<a th:href="@{/message}" target="_blank" ><span class="ic_dc"></span>我的订单</a>
+			</p>
+		</div>
+	</div>
+
+	<div class="headnav">
+		<div class="secondmenu" id="secondmenu" style="display: none;">
+			<ul>
+				<li><a href="#">精选</a></li>
+				<li><a href="#">分类</a></li>
+				<li><a href="#">食材</a></li>
+				<li><a href="#">排行榜</a></li>
+			</ul>
+		</div>
+		<div class="hcent">
+			<div class="hnav fsm">
+				<ul>
+					<li class="ls lone"><a href="#" ><span>首页</span></a></li>
+					<li class=" lone" id="showscm"><a href="#"><span>菜谱</span><s class="naww"></s></a></li>
+					<li class=" lone"><a href="#"><span>写食派</span></a></li>
+					<li class=" lone"><a href="#"><span>商城</span></a><div class="icnew"></div></li>
+					<li class="relative  lone"><a href="#"><span>主题站</span></a></li>
+				</ul>
+			</div>
+			<div class="search">
+				<form method="POST" id="searchForm" action="/search/recipe/" accept-charset="utf-8" onsubmit="document.charset='utf-8';return Search();">
+					<input type="text" id="global_search_inpt" class="sput itqu" name="keywords" placeholder="搜索菜谱、菜单、食材、用户" x-webkit-speech="" x-webkit-grammar="bUIltin:search" lang="zh-CN" ;>
+					<input type="submit" value="搜索" class="lib">
+				</form>
+			</div>
+			<div class="issue" onmouseover="$('#issueall').show()" onmouseout="$('#issueall').hide()">
+				<a href="javascript:void(0); " class="btniss">发布</a>
+				<div class="fallce r3" id="issueall" style="display: none; ">
+					<span class="armtop"> </span>
+					<p>
+						<a th:href="@{/Release2}" class="rt3" target="_blank" rel="nofollow">发布菜谱</a>
+						<a th:href="@{/Release1}" target="_blank" rel="nofollow">创建菜单</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+    var islogin = getCookies('user_id');
+    if(islogin == '')
+    {
+        var comformvalue = getCookies('comfrom');
+        var is_showloginheads = getCookies('is_showlonginlead');
+        if(is_showloginheads != 'OK')
+        {
+            if(comformvalue == 1)
+            {
+                setCookie('showNums',0);
+                showloginhead('sina');
+            }
+            else if(comformvalue == 2)
+            {
+                setCookie('showNums',0);
+                showloginhead('qq');
+            }
+        }
+    }
+    var is_findfriend = getCookies('is_friendinfo');
+    if(is_findfriend != 'OK')
+    {
+        var cnick = "尤木";
+        var apitype = "";
+        if(apitype == 'sina' || apitype == 'douban')
+        {
+            //findFriendtips(apitype, cnick);
+            setcookie('is_friendinfo', 'OK', 0, '/', 'www.douguo.com');
+        }
+    }
+    function overshow(){$("#header_usermenu").show()}
+    function outshow(){$("#header_usermenu").hide()}
+</script>
+
+
+
+
+   
+<script type="text/javascript">
+var islogin = getCookies('user_id');
+if(islogin == '')
+{
+	var comformvalue = getCookies('comfrom');
+	var is_showloginheads = getCookies('is_showlonginlead');
+	if(is_showloginheads != 'OK')
+	{
+		if(comformvalue == 1)
+		{
+			setCookie('showNums',0);
+			showloginhead('sina');
+		}
+		else if(comformvalue == 2)
+		{
+			setCookie('showNums',0);
+			showloginhead('qq');
+ } } } var is_findfriend = getCookies('is_friendinfo'); if(is_findfriend != 'OK') { var cnick = "尤木"; var apitype = ""; if(apitype == 'sina' || apitype == 'douban')
+</script>
+<div id="main" class="clearfix">
+	<div class="maleft">
+		<div class="intenav r3 mb25">
+			<ul class="pls">
+				<!--<li ><a href="https://www.douguo.com/jifen/product/lists/0"><span>积分商城</span></a></li>-->
+				<!-- <li ><a href="https://www.douguo.com/jifen/product/lists/my"><span>我可兑换的物品</span></a></li> -->
+				<li class="ls lirdo">
+					<a href=""><span>积分规则</span></a>
+				</li>
+			</ul>
+		</div>
+		<div class="jfpath mbl">当前位置： 积分规则</div>
+		<div class="rultab mb20">
+			<table width="600" border="0" cellspacing="0" cellpadding="0">
+				<tr height="30">
+					<td class="rnam">频道</td>
+					<td class="rcz">操作</td>
+					<td class="rsx">获取上限</td>
+					<td class="rjf">积分</td>
+				</tr>
+				<tr height="30">
+					<td rowspan="4" class="rnam2">
+						个人行为
+					</td>
+					<td class="rcz2">
+						注册 </td>
+					<td class="rsx2">1次</td>
+					<td class="rjf2">20分</td>
+				</tr>
+				<tr height="30">
+					<td class="rcz2">
+						<a href='/user/profile' target='_blank'>上传头像 </a>
+					</td>
+					<td class="rsx2">1次</td>
+					<td class="rjf2">15分</td>
+				</tr>
+				<tr height="30">
+					<td class="rcz2">
+						<a th:href="@{/mem}">完善个人信息 </a>
+					</td>
+					<td class="rsx2">1次</td>
+					<td class="rjf2">10分</td>
+				</tr>
+				<tr height="30">
+					<td class="rcz2">
+						绑定手机号 </td>
+					<td class="rsx2">1次</td>
+					<td class="rjf2">15分</td>
+				</tr>
+				<tr height="30">
+					<td rowspan="6" class="rnam2">
+						<a th:href="@{/personal1}">菜谱作品</a>
+					</td>
+					<td class="rcz2">
+						<a th:href="@{/Release2}">发布菜谱</a>
+					</td>
+					<td class="rsx2">不限</td>
+					<td class="rjf2">10-30分</td>
+				</tr>
+				<tr height="30">
+					<td class="rcz2">
+						菜谱被推荐到首页 </td>
+					<td class="rsx2">1次</td>
+					<td class="rjf2">50分</td>
+				</tr>
+				<tr height="30">
+					<td class="rcz2">
+						分享菜谱到朋友圈 </td>
+					<td class="rsx2">20次</td>
+					<td class="rjf2">2分</td>
+				</tr>
+				<tr height="30">
+					<td class="rcz2">
+						发布作品 </td>
+					<td class="rsx2">10次</td>
+					<td class="rjf2">10分</td>
+				</tr>
+				<tr height="30">
+					<td class="rcz2">
+						分享作品到朋友圈 </td>
+					<td class="rsx2">20次</td>
+					<td class="rjf2">2分</td>
+				</tr>
+				<tr height="30">
+					<td class="rcz2">
+						发布评论 </td>
+					<td class="rsx2">20次</td>
+					<td class="rjf2">2分</td>
+				</tr>
+				<tr height="30">
+					<td rowspan="4" class="rnam2">
+						圈圈 </td>
+					<td class="rcz2">
+						发布帖子 </td>
+					<td class="rsx2">10次</td>
+					<td class="rjf2">5-10分</td>
+				</tr>
+				<tr height="30">
+					<td class="rcz2">
+						帖子被加精 </td>
+					<td class="rsx2">不限</td>
+					<td class="rjf2">30分</td>
+				</tr>
+				<tr height="30">
+					<td class="rcz2">
+						帖子成为热帖 </td>
+					<td class="rsx2">不限</td>
+					<td class="rjf2">30分</td>
+				</tr>
+				<tr height="30">
+					<td class="rcz2">
+						分享帖子到朋友圈 </td>
+					<td class="rsx2">10次</td>
+					<td class="rjf2">2分</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+		<div class="maright">
+			<div class="meeer r3 clearfix mb28">
+	<div class="mehd">
+		<a href="" title="尤木" rel="nofollow" target="_blank"><img src="https://i1.douguo.com/static/img/70.jpg" alt="尤木"></a>
+	</div>
+	<h4><a href="" target="_blank" title="尤木">尤木</a></h4>
+	<a href="" class="btnidd mrm">我的订单</a><a href="" class="btnidd">兑换记录</a>	
+	<div class="mrecord">
+		<p>我的积分：35分<br/>可用积分：35分<br/>积分不够？<a href="https://www.douguo.com/jifen/rule">快速赚取秘籍</a></p>
+	</div>
+</div>
+<div class="dhchange mb27">
+	<h2 class="mbs">积分排行榜</h2>
+		<div class="epro libdo clearfix">
+		<div class="cpicd">
+			<a href="" rel="nofollow" target="_blank" title="六月荷塘"><img src="images/48.jpg" alt="六月荷塘"></a>
+		</div>
+		<h4><a title="六月荷塘" href="" target="_blank">六月荷塘</a></h4>
+		<span>积分：5917649</span>
+		<a id="guanzhu5822298" userid="5822298" title = "关注" href="javascript:void(0)"class="newgz jiaf"></a>	</div>
+		<div class="epro libdo clearfix">
+		<div class="cpicd">
+			<a href="" rel="nofollow" target="_blank" title="一笑＆而过"><img src="images/48.jpg" alt="一笑＆而过"></a>
+		</div>
+		<h4><a title="一笑＆而过" href="" target="_blank">一笑＆而过</a><a href='/user/prodesc' class='picon progr' rel='nofollow' target='_blank' title='豆果美食达人认证'></a></h4>
+		<span>积分：309133</span>
+		<a id="guanzhu5778090" userid="5778090" title = "关注" href="javascript:void(0)"class="newgz jiaf"></a>	</div>
+		<div class="epro libdo clearfix">
+		<div class="cpicd">
+			<a href="" rel="nofollow" target="_blank" title="许多心愿"><img src="images/48.jpg" alt="许多心愿"></a>
+		</div>
+		<h4><a title="许多心愿" href="" target="_blank">许多心愿</a><a href='/user/prodesc' class='picon progr' rel='nofollow' target='_blank' title='豆果美食达人认证'></a></h4>
+		<span>积分：306135</span>
+		<a id="guanzhu7594627" userid="7594627" title = "关注" href="javascript:void(0)"class="newgz jiaf"></a>	</div>
+		<div class="epro libdo clearfix">
+		<div class="cpicd">
+			<a href="" rel="nofollow" target="_blank" title="jmy的私房菜"><img src="images/48.jpg" alt="jmy的私房菜"></a>
+		</div>
+		<h4><a title="jmy的私房菜" href="" target="_blank">jmy的私房菜</a><a href='/user/prodesc' class='picon progr' rel='nofollow' target='_blank' title='豆果美食达人认证'></a></h4>
+		<span>积分：293849</span>
+		<a id="guanzhu5982038" userid="5982038" title = "关注" href="javascript:void(0)"class="newgz jiaf"></a>	</div>
+		<div class="epro libdo clearfix">
+		<div class="cpicd">
+			<a href="" rel="nofollow" target="_blank" title="阅宝麻麻"><img src="images/48.jpg" alt="阅宝麻麻"></a>
+		</div>
+		<h4><a title="阅宝麻麻" href="" target="_blank">阅宝麻麻</a><a href='/user/prodesc' class='picon progr' rel='nofollow' target='_blank' title='豆果美食达人认证'></a></h4>
+		<span>积分：289417</span>
+		<a id="guanzhu7777820" userid="7777820" title = "关注" href="javascript:void(0)"class="newgz jiaf"></a>	</div>
+	</div>
+<div class="mb25">
+
+</div>
+		</div>
+	</div><style type="text/css" media="screen">
+ .down-left { width: 0; height: 120px; background: url('https://i1.douguo.com//static/img/huodong/down/pic_120.png'); background-size: 120px 120px; cursor: pointer; position: fixed; bottom: 0; left: 0;display: none; }
+.down-layer { width: 0; height: 104px; position: fixed; bottom: 0; left: 0;  background: rgba(255, 126, 0, 0.8); z-index: 999;display: none;}
+.in-layer { width: 828px; height: 104px; display: block; margin: auto; position: relative; background: url('https://i1.douguo.com//upload/banner/1512130201.png') no-repeat; background-size: 828px 104px; }
+
+</style>
+
+
+<div id="footer">
+	<div class="foot tc" style="padding-top: 140px; background-color: #F8F8F7">
+  	   <p>关于食逸安·在食逸安工作·意见反馈·友情链接·菜谱大全·品牌馆</p>
+  	   <br />
+  	<p>北京豆果信息技术有限公司 京ICP证111032号京公网安备11010102001133号 京网文【2018】6954-770号 食品流通许可证SP1101061510252413</p>
+  </div>  
+</div>
+
+<script>
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="">
+<meta name="description" content="mezz">
+<meta name="author" content="mezz">
+    <link  rel="stylesheet" th:href="@{/css/css.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{layui/css/layui.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/base.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/topmenu.css}"/>
+    <script type="text/javascript" th:src="@{js/jquery.js}"></script>
+    <script th:src="@{layui/layui.js}"></script>
+<script>
+	//菜谱下拉菜单
+	$(function () {
+        $(function(){
+            $('#showscm').on('click',function(){
+                $('#secondmenu').toggle('slow');
+            })
+        })
+   })
+</script>
+<title>修改密码</title>
+<a class="dg-passport" id="login"></a>
+<input type ="hidden" id="getjs" value="0">
+</head>
+<body>
+<div id="header">
+    <div class="head">
+        <div class="hlogo">
+            <a title="食逸安" href="/"><img th:src="@{images/414.png}" width="45px" height="45px" style="line-height: 30px; " /></a>
+        </div>
+        <div class="tlogin" id="header_info" uid="22704506" pur="0">
+            <div class="myifo" onmouseover="overshow()" onmouseout="outshow()">
+                <a th:href="@{/personal}" target="_blank" class="plt5"><img id="imgicon" th:src="@{images/48.jpg}" alt="尤木"></a>
+                <div class="swfom r3 hidden" id="header_usermenu">
+                    <span class="arwwj"> </span>
+                    <p>
+                        <a th:href="@{/receive}" target="_blank">提醒</a>
+                        <a th:href="@{/mem.}" target="_blank">账号设置</a>
+                        <a th:href="@{/login}" class="rb3" >退出</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="perinfo" style="width: 370px;">
+            <p>
+                <a th:href="@{/jifen}" target="_blank"><span class="ic_jife"></span>积分35</a>　
+                <a th:href="@{/personal4}" target="_blank" class="mr10" style="margin-right:10px;"><span class="ic_shca"></span>我的收藏</a>
+                <a th:href="@{/message}" target="_blank" ><span class="ic_dc"></span>我的订单</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="headnav">
+        <div class="secondmenu" id="secondmenu" style="display: none;">
+            <ul>
+                <li><a href="#">精选</a></li>
+                <li><a href="#">分类</a></li>
+                <li><a href="#">食材</a></li>
+                <li><a href="#">排行榜</a></li>
+            </ul>
+        </div>
+        <div class="hcent">
+            <div class="hnav fsm">
+                <ul>
+                    <li class="ls lone"><a href="#" ><span>首页</span></a></li>
+                    <li class=" lone" id="showscm"><a href="#"><span>菜谱</span><s class="naww"></s></a></li>
+                    <li class=" lone"><a href="#"><span>写食派</span></a></li>
+                    <li class=" lone"><a href="#"><span>商城</span></a><div class="icnew"></div></li>
+                    <li class="relative  lone"><a href="#"><span>主题站</span></a></li>
+                </ul>
+            </div>
+            <div class="search">
+                <form method="POST" id="searchForm" action="/search/recipe/" accept-charset="utf-8" onsubmit="document.charset='utf-8';return Search();">
+                    <input type="text" id="global_search_inpt" class="sput itqu" name="keywords" placeholder="搜索菜谱、菜单、食材、用户" x-webkit-speech="" x-webkit-grammar="bUIltin:search" lang="zh-CN" ;>
+                    <input type="submit" value="搜索" class="lib">
+                </form>
+            </div>
+            <div class="issue" onmouseover="$('#issueall').show()" onmouseout="$('#issueall').hide()">
+                <a href="javascript:void(0); " class="btniss">发布</a>
+                <div class="fallce r3" id="issueall" style="display: none; ">
+                    <span class="armtop"> </span>
+                    <p>
+                        <a th:href="@{/Release2}" class="rt3" target="_blank" rel="nofollow">发布菜谱</a>
+                        <a th:href="@{/Release1}" target="_blank" rel="nofollow">创建菜单</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var islogin = getCookies('user_id');
+    if(islogin == '')
+    {
+        var comformvalue = getCookies('comfrom');
+        var is_showloginheads = getCookies('is_showlonginlead');
+        if(is_showloginheads != 'OK')
+        {
+            if(comformvalue == 1)
+            {
+                setCookie('showNums',0);
+                showloginhead('sina');
+            }
+            else if(comformvalue == 2)
+            {
+                setCookie('showNums',0);
+                showloginhead('qq');
+            }
+        }
+    }
+    var is_findfriend = getCookies('is_friendinfo');
+    if(is_findfriend != 'OK')
+    {
+        var cnick = "尤木";
+        var apitype = "";
+        if(apitype == 'sina' || apitype == 'douban')
+        {
+            //findFriendtips(apitype, cnick);
+            setcookie('is_friendinfo', 'OK', 0, '/', 'www.douguo.com');
+        }
+    }
+    function overshow(){$("#header_usermenu").show()}
+    function outshow(){$("#header_usermenu").hide()}
+</script>
+
+
+
+<div class="memwrap wrap clearfix">
+  <div class="section fl" style="padding: 150px ;">
+    <div class="location tr"><a th:href="@{/mem}">基本资料</a><a th:href="@{/pwd}" class="current">修改密码</a><a th:href="@{/binding}">帐号绑定</a></div>
+    <div class="pd20">
+      <table class="baseinfo">
+        <tr>
+          <th>原始密码：</th>
+          <td><input type="password" value="" class="baseipt"></td>
+        </tr>
+        <tr>
+          <th>新密码：</th>
+          <td><input type="password" value="" class="baseipt"></td>
+        </tr>
+        <tr>
+          <th>确认密码：</th>
+          <td><input type="password" value="" class="baseipt"><span class="f12">两次密码输入不一致</span></td>
+        </tr>
+        <tr>
+          <th>&nbsp;</th>
+          <td><button type="button" name="save" value="" class="button btn-save">修改</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+</body>
+<script th:src="@{js/jquery.js}"></script>
+<script th:src="@{js/Action.js}"></script>
+<script th:src="@{js/upfiles.js}"></script>
+
+<script th:src="@{js/chosen.jquery.js}"></script>
+<script>
+$(document).ready(function($){
+	//select 样式美化
+	 var config = {
+		'.chosen-select-no-single' : {disable_search_threshold:10}
+	}
+	for (var selector in config) {
+		$(selector).chosen(config[selector]);
+	}
+});
+</script>
+</html>
