@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shiyian.mapper.FoodClassMapper">
-    <select id="findFoodClassList" resultType="com.shiyian.entity.FoodClass">
-        select * from foodclass
+    <resultMap id="foodsMap" type="com.shiyian.entity.FoodClass">
+        <id property="id" column="cid"/>
+        <result property="name" column="classname"/>
+        <collection property="foods" ofType="com.shiyian.entity.Food">
+            <id property="id" column="id"></id>
+            <result property="name" column="name"/>
+            <result property="othername" column="othername"/>
+            <result property="heat" column="heat"/>
+            <result property="suitable" column="suitable"/>
+            <result property="fooddetail" column="fooddetail"></result>
+        </collection>
+    </resultMap>
+
+
+    <select id="findFoodList" resultMap="foodsMap">
+        SELECT fc.* ,f.* FROM foodclass fc
+        LEFT JOIN foodandclass fac on fc.cid=fac.classid
+        LEFT JOIN food f ON f.id=fac.foodid
     </select>
-    <select id="findFoodList" resultType="com.shiyian.entity.Food">
-        select * from food
-    </select>
-    <select id="findFoodAndFoodClassList" resultType="com.shiyian.entity.vo.FoodAndFoodClass">
-        select * from foodAndclass
-    </select>
+
 </mapper>

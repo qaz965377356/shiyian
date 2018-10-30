@@ -141,11 +141,10 @@
                 </a>
 			</div>
 			<div class="scintro">
-				<h1 class="mb3">排骨</h1>
-                    <p><span>别名：</span>排骨、猪排</p>
-                        <p><span>热量：</span>278大卡（100克可食部分）</p>
-                    <p><span>分类：</span><a target="_blank" href="/shicai/65">肉类</a>, <a target="_blank" href="/shicai/65/17">猪</a></p>
-                <p><span>适宜人群：</span>一般人都可食用 。适宜于气血不足，阴虚纳差者。</p>
+				<h1 class="mb3" th:text="${food.name}">排骨</h1>
+                <p><span>别名：</span> <th:block th:text="${food.othername}"> 排骨、猪排</th:block></p>
+                <p><span>热量：</span></p><th:block th:text="${food.heat}">278大卡</th:block>  (100克可食部分)
+                <p><span>适宜人群：</span><th:block th:text="${food.suitable}">一般人都可食用 。适宜于气血不足，阴虚纳差者。</th:block></p>
                  <!-- Baidu Button BEGIN -->
                 <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare pts" style="float:right;">
                 <span class="bds_more inblok" style="display: inline-block;"></span>
