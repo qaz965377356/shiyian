@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="食逸安" />
+	<meta name="description" content="食逸安" />
+	<title>食逸安</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/base.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/layui/css/layui.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/topmenu.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/details.css}"/>
+	<script type="text/javascript" th:src="@{/js/jquery-1.7.2.min.js}"></script>
+	<script type="text /javascript" th:src="@{/js/koala.min.1.5.js}"></script>
+	<script th:src="@{/layui/layui.js}"></script>
+		<script>
+			//菜谱下拉菜单
+			$(function() {
+				$(function() {
+					$('#showscm').on('click', function() {
+						$('#secondmenu').toggle('slow');
+					})
+					$(".imagef").mouseover(function(){
+   					 		$("#img01").show("slow");
+		 			});
+		 			$(".adrt").mouseout(function(){
+		   					 $("#img01").hide("slow");
+ 				});
+				});
+			})
+			//	$(function () {
+			//      $(function(){
+			//          $('#secondmenu').on('mouseout',function(){
+			//              $('#secondmenu').hide('slow');
+			//          })
+			//      })
+			//  })
+		</script>
+	</head>
+
+	<body>
+		<div id="header">
+	<div class="head">
+        <div class="hlogo"><a title="食逸安" href="/"><img src="images/414.png" width="45px" height="45px" style="line-height: 30px;"/></a></div>
+		<div class="tlogin" id="header_info" uid="0" pur="0">
+					<div class="toploginqs" id="topThirdLogin">
+        	<a href="#" class="topsmqq" rel="nofollow">QQ登录</a><a href="/api/sina_login" class="topsmsina" rel="nofollow">新浪微博</a>
+        </div>
+			<div class="slan"><a href="#" title="登录" rel="nofollow">登录</a><span class="pls prs">|</span><a href="/signup.html?time=1540204612" target="_blank" rel="nofollow" title="注册">注册</a><span class="pls prs"></span></div>
+        </div>
+	</div>
+    <div class="headnav">
+    	<div class="secondmenu" id="secondmenu" style="display: none;">
+    		<ul>
+    			<li><a href="#">精选</a></li>
+    			<li><a href="#">分类</a></li>
+    			<li><a href="#">食材</a></li>
+    			<li><a href="#">排行榜</a></li>
+    		</ul>
+    	</div>
+    	<div class="hcent">
+            <div class="hnav fsm">
+                <ul>
+					<li class=" lone"><a href="#" ><span>首页</span></a></li>
+                    <li class="" id="showscm"><a href="#"><span>菜谱</span><s class="naww"></s></a></li>
+					<li class="ls lone"><a href="#"><span>写食派</span></a></li>
+					<li class=" lone"><a href="#"><span>商城</span></a><div class="icnew"></div></li>
+					<li class="relative  lone"><a href="#"><span>主题站</span></a></li>
+                </ul>
+            </div>
+            <div class="search">
+                <form method="POST" id="searchForm" action="/search/recipe/" accept-charset="utf-8" onsubmit="document.charset='utf-8';return Search();">
+                    <input type="text" id="global_search_inpt" class="sput itqu" name="keywords" placeholder="搜索菜谱、菜单、食材、用户" x-webkit-speech="" x-webkit-grammar="bUIltin:search" lang="zh-CN">
+                    <input type="submit" value="搜索" class="lib">
+                </form>
+            </div>
+            <div class="issue" onmouseover="$('#issueall').show()" onmouseout="$('#issueall').hide()">
+                <a href="javascript:void(0);" class="btniss">发布</a>
+				<div class="fallce r3" id="issueall" style="display: none; ">
+					<span class="armtop"> </span>
+						<p>
+							<a href="#" class="rt3" target="_blank" rel="nofollow">发布菜谱</a>
+						   <a href="#" target="_blank" rel="nofollow">创建菜单</a>
+						   <a href="#" target="_blank" rel="nofollow">上传美食日记</a>
+                        </p>
+				</div>
+            </div>
+        </div>
+        <div style="height: 10px; "></div>
+        <div class="hcent" style="width: 1000px; margin: 0 auto; background-color: #DAEAE8; ">
+            <div class="hnav fsm">
+                <ul>
+					<li><a><span style="font-size: 16pt; font-family: '黑体'; " >发现</span></a></li>
+					<li class=" lone"><a href="draw02.html"><span>餐厅</span></a><div class="icnew"></div></li>
+                </ul>
+            </div>      
+        </div>
+    </div>
+</div>
+	<div class="imageFood ">
+		<div  class="ablack" ></div>
+		<div class="food1 ">
+			<a href="detailRe.html"><img src="images/mmzi.jpg " class="imagef"/>
+				<div class="adrt" id="img01">
+				<p>少女心</p>
+				<span class="aly" ><a href="#">偶嘀家</a></span><br />
+				<span><a href="#">
+					<i class="layui-icon layui-icon-praise" style="font-size: 20pt; color: red;" ></i> 
+					143
+				</a></span><br />
+				<span><a href="#"><b style="color: #000000;">by 小狼Queena...</b></a></span><br />
+			</div>
+		</a>
+				
+		</div>
+		<div class="food1 ">
+			<a href="detailRe.html"><img src="images/mmzi.jpg " class="imagef" id="imgs01"/></a>
+				<a href="detailRe.html" >
+				<div class="adrt" id="img03">
+				<p>少女心</p>
+				<span class="aly" ><a href="#">偶嘀家</a></span><br />
+				<span><a href="#">
+				<i class="layui-icon layui-icon-praise" style="font-size: 20pt; color: red;" ></i> 143
+				</a></span><br />
+				<span><a href="#"><b style="color: #000000;">by 小狼Queena...</b></a></span><br />
+				</div>
+			</a>
+		</div>
+		<div class="food1 ">
+			<a href="detailRe.html"><img src="images/mmzi.jpg " class="imagef"/></a>
+				<a href="detailRe.html" >
+				<div class="adrt">
+				<p>少女心</p>
+				<span class="aly" ><a href="#">偶嘀家</a></span><br />
+				<span><a href="#">
+				<i class="layui-icon layui-icon-praise" style="font-size: 20pt; color: red;" ></i> 143
+				</a></span><br />
+				<span><a href="#"><b style="color: #000000;">by 小狼Queena...</b></a></span><br />
+				</div>
+			</a>
+		</div>
+		<div class="food1 ">
+			<a href="detailRe.html"><img src="images/mmzi.jpg " class="imagef"/></a>
+			<a href="detailRe.html" >
+				<div class="adrt">
+					<p>少女心</p>
+					<span class="aly" ><a href="#">偶嘀家</a></span><br />
+					<span><a href="#">
+				<i class="layui-icon layui-icon-praise" style="font-size: 20pt; color: red;" ></i> 143
+				</a></span><br />
+					<span><a href="#"><b style="color: #000000;">by 小狼Queena...</b></a></span><br />
+				</div>
+			</a>
+		</div>
+		<div class="food1 ">
+			<a href="detailRe.html"><img src="images/mmzi.jpg " class="imagef"/></a>
+			<a href="detailRe.html" >
+				<div class="adrt">
+					<p>少女心</p>
+					<span class="aly" ><a href="#">偶嘀家</a></span><br />
+					<span><a href="#">
+				<i class="layui-icon layui-icon-praise" style="font-size: 20pt; color: red;" ></i> 143
+				</a></span><br />
+					<span><a href="#"><b style="color: #000000;">by 小狼Queena...</b></a></span><br />
+				</div>
+			</a>
+		</div>
+		<div class="food1 ">
+			<a href="detailRe.html"><img src="images/mmzi.jpg " class="imagef"/></a>
+			<a href="detailRe.html" >
+				<div class="adrt">
+					<p>少女心</p>
+					<span class="aly" ><a href="#">偶嘀家</a></span><br />
+					<span><a href="#">
+				<i class="layui-icon layui-icon-praise" style="font-size: 20pt; color: red;" ></i> 143
+				</a></span><br />
+					<span><a href="#"><b style="color: #000000;">by 小狼Queena...</b></a></span><br />
+				</div>
+			</a>
+		</div>
+		<div class="food1 ">
+			<a href="detailRe.html"><img src="images/mmzi.jpg " class="imagef"/></a>
+			<a href="detailRe.html" >
+				<div class="adrt">
+					<p>少女心</p>
+					<span class="aly" ><a href="#">偶嘀家</a></span><br />
+					<span><a href="#">
+				<i class="layui-icon layui-icon-praise" style="font-size: 20pt; color: red;" ></i> 143
+				</a></span><br />
+					<span><a href="#"><b style="color: #000000;">by 小狼Queena...</b></a></span><br />
+				</div>
+			</a>
+		</div>
+		<div class="food1 ">
+			<a href="detailRe.html"><img src="images/mmzi.jpg " class="imagef"/></a>
+			<a href="detailRe.html" >
+				<div class="adrt">
+					<p>少女心</p>
+					<span class="aly" ><a href="#">偶嘀家</a></span><br />
+					<span><a href="#">
+				<i class="layui-icon layui-icon-praise" style="font-size: 20pt; color: red;" ></i> 143
+				</a></span><br />
+					<span><a href="#"><b style="color: #000000;">by 小狼Queena...</b></a></span><br />
+				</div>
+			</a>
+		</div>
+		<div class="food1 ">
+			<a href="detailRe.html"><img src="images/mmzi.jpg " class="imagef"/></a>
+			<a href="detailRe.html" >
+				<div class="adrt">
+					<p>少女心</p>
+					<span class="aly" ><a href="#">偶嘀家</a></span><br />
+					<span><a href="#">
+				<i class="layui-icon layui-icon-praise" style="font-size: 20pt; color: red;" ></i> 143
+				</a></span><br />
+					<span><a href="#"><b style="color: #000000;">by 小狼Queena...</b></a></span><br />
+				</div>
+			</a>
+		</div>
+		<div class="food1 ">
+			<a href="detailRe.html"><img src="images/mmzi.jpg " class="imagef"/></a>
+			<a href="detailRe.html" >
+				<div class="adrt">
+					<p>少女心</p>
+					<span class="aly" ><a href="#">偶嘀家</a></span><br />
+					<span><a href="#">
+				<i class="layui-icon layui-icon-praise" style="font-size: 20pt; color: red;" ></i> 143
+				</a></span><br />
+					<span><a href="#"><b style="color: #000000;">by 小狼Queena...</b></a></span><br />
+				</div>
+			</a>
+		</div>
+		<div class="food1 ">
+			<a href="detailRe.html"><img src="images/mmzi.jpg " class="imagef"/></a>
+			<a href="detailRe.html" >
+				<div class="adrt">
+					<p>少女心</p>
+					<span class="aly" ><a href="#">偶嘀家</a></span><br />
+					<span><a href="#">
+				<i class="layui-icon layui-icon-praise" style="font-size: 20pt; color: red;" ></i> 143
+				</a></span><br />
+					<span><a href="#"><b style="color: #000000;">by 小狼Queena...</b></a></span><br />
+				</div>
+			</a>
+		</div>
+		<div class="food1 ">
+			<a href="detailRe.html"><img src="images/mmzi.jpg " class="imagef"/></a>
+			<a href="detailRe.html" >
+				<div class="adrt">
+					<p>少女心</p>
+					<span class="aly" ><a href="#">偶嘀家</a></span><br />
+					<span><a href="#">
+				<i class="layui-icon layui-icon-praise" style="font-size: 20pt; color: red;" ></i> 143
+				</a></span><br />
+					<span><a href="#"><b style="color: #000000;">by 小狼Queena...</b></a></span><br />
+				</div>
+			</a>
+		</div>
+		<div class="food1 ">
+			<a href="detailRe.html"><img src="images/mmzi.jpg " class="imagef"/></a>
+			<a href="detailRe.html" >
+				<div class="adrt">
+					<p>少女心</p>
+					<span class="aly" ><a href="#">偶嘀家</a></span><br />
+					<span><a href="#">
+				<i class="layui-icon layui-icon-praise" style="font-size: 20pt; color: red;" ></i> 143
+				</a></span><br />
+					<span><a href="#"><b style="color: #000000;">by 小狼Queena...</b></a></span><br />
+				</div>
+			</a>
+		</div>
+		<div class="food1 ">
+			<a href="detailRe.html"><img src="images/mmzi.jpg " class="imagef"/></a>
+			<a href="detailRe.html" >
+				<div class="adrt">
+					<p>少女心</p>
+					<span class="aly" ><a href="#">偶嘀家</a></span><br />
+					<span><a href="#">
+				<i class="layui-icon layui-icon-praise" style="font-size: 20pt; color: red;" ></i> 143
+				</a></span><br />
+					<span><a href="#"><b style="color: #000000;">by 小狼Queena...</b></a></span><br />
+				</div>
+			</a>
+		</div>
+		<div class="food1 ">
+			<a href="detailRe.html"><img src="images/mmzi.jpg " class="imagef"/></a>
+			<a href="detailRe.html" >
+				<div class="adrt">
+					<p>少女心</p>
+					<span class="aly" ><a href="#">偶嘀家</a></span><br />
+					<span><a href="#">
+				<i class="layui-icon layui-icon-praise" style="font-size: 20pt; color: red;" ></i> 143
+				</a></span><br />
+					<span><a href="#"><b style="color: #000000;">by 小狼Queena...</b></a></span><br />
+				</div>
+			</a>
+		</div>
+
+		
+		
+	</div>
+	<div class="ablack" ></div>
+	<div class="detail ">
+		<div class="res ">
+			<h1 class="title01" ><b>推荐餐厅</b><a href="# " >(更多)</a></h1>
+			
+			<div class="clear ">	</div>
+			
+			<div class="res_list ">          
+                <h3 class="mb10 "><a href="detailRe.html" >香天下火锅</a></h3>
+				    <p><font class="fccm ">推荐理由：</font>味道很正宗的重庆老火锅，也是全国连锁。在广州的朋友们如果想尝试传统的重庆老火锅推荐去这家体验。</p>
+					<p><font class="fccm ">地址：</font>广州市天河区 体育东路13号2层(近邮政储蓄银行)</p>
+					<p><font class="fccm ">人均：</font><font class="ff0 fsm ">￥100</font></p>
+				<div class="canti ">
+               		<a href="detailRe.html" >
+                        <img src="images/litter.jpg" class="imagef " title="小菜 ">
+                        <div class="ctit " title="小菜 ">小菜</div>
+                	</a>    
+                </div>
+                <div class="canti ">
+                	<a href="detailRe.html">
+                        <img src="images/food1.jpg" class="imagef " title="挂面鸭肠与千层肚 ">
+                        <div class="ctit " title="挂面鸭肠与千层肚 ">挂面鸭肠与千层肚...</div>
+                    </a>    
+                </div>
+                <div class="canti">
+                	<a href="#">
+                        <img src="images/food2.jpg" class="imagef " title="黑豆腐 ">
+                        <div class="ctit " title="黑豆腐 ">黑豆腐</div>
+                    </a>    
+                </div>
+                <div class="canti ">
+                	<a href="#">
+                        <img src="images/food4.jpg" class="imagef " title="笋片王 ">
+                        <div class="ctit " title="笋片王 ">笋片王</div>
+                    </a>    
+                </div>
+			</div>
+			<div class="res_list ">
+				<h3 class="mb10 "><a href="detailRe.html" >香天下火锅</a></h3>
+				<p><font class="fccm ">推荐理由：</font>味道很正宗的重庆老火锅，也是全国连锁。在广州的朋友们如果想尝试传统的重庆老火锅推荐去这家体验。</p>
+				<p><font class="fccm ">地址：</font>广州市天河区 体育东路13号2层(近邮政储蓄银行)</p>
+				<p><font class="fccm ">人均：</font><font class="ff0 fsm ">￥100</font></p>
+				<div class="canti ">
+					<a href="detailRe.html" >
+						<img src="images/litter.jpg" class="imagef " title="小菜 ">
+						<div class="ctit " title="小菜 ">小菜</div>
+					</a>
+				</div>
+				<div class="canti ">
+					<a href="detailRe.html">
+						<img src="images/food1.jpg" class="imagef " title="挂面鸭肠与千层肚 ">
+						<div class="ctit " title="挂面鸭肠与千层肚 ">挂面鸭肠与千层肚...</div>
+					</a>
+				</div>
+				<div class="canti">
+					<a href="#">
+						<img src="images/food2.jpg" class="imagef " title="黑豆腐 ">
+						<div class="ctit " title="黑豆腐 ">黑豆腐</div>
+					</a>
+				</div>
+				<div class="canti ">
+					<a href="#">
+						<img src="images/food4.jpg" class="imagef " title="笋片王 ">
+						<div class="ctit " title="笋片王 ">笋片王</div>
+					</a>
+				</div>
+			</div>
+			<div class="res_list ">
+				<h3 class="mb10 "><a href="detailRe.html" >香天下火锅</a></h3>
+				<p><font class="fccm ">推荐理由：</font>味道很正宗的重庆老火锅，也是全国连锁。在广州的朋友们如果想尝试传统的重庆老火锅推荐去这家体验。</p>
+				<p><font class="fccm ">地址：</font>广州市天河区 体育东路13号2层(近邮政储蓄银行)</p>
+				<p><font class="fccm ">人均：</font><font class="ff0 fsm ">￥100</font></p>
+				<div class="canti ">
+					<a href="detailRe.html" >
+						<img src="images/litter.jpg" class="imagef " title="小菜 ">
+						<div class="ctit " title="小菜 ">小菜</div>
+					</a>
+				</div>
+				<div class="canti ">
+					<a href="detailRe.html">
+						<img src="images/food1.jpg" class="imagef " title="挂面鸭肠与千层肚 ">
+						<div class="ctit " title="挂面鸭肠与千层肚 ">挂面鸭肠与千层肚...</div>
+					</a>
+				</div>
+				<div class="canti">
+					<a href="#">
+						<img src="images/food2.jpg" class="imagef " title="黑豆腐 ">
+						<div class="ctit " title="黑豆腐 ">黑豆腐</div>
+					</a>
+				</div>
+				<div class="canti ">
+					<a href="#">
+						<img src="images/food4.jpg" class="imagef " title="笋片王 ">
+						<div class="ctit " title="笋片王 ">笋片王</div>
+					</a>
+				</div>
+			</div>
+			<div class="res_list ">
+				<h3 class="mb10 "><a href="detailRe.html" >香天下火锅</a></h3>
+				<p><font class="fccm ">推荐理由：</font>味道很正宗的重庆老火锅，也是全国连锁。在广州的朋友们如果想尝试传统的重庆老火锅推荐去这家体验。</p>
+				<p><font class="fccm ">地址：</font>广州市天河区 体育东路13号2层(近邮政储蓄银行)</p>
+				<p><font class="fccm ">人均：</font><font class="ff0 fsm ">￥100</font></p>
+				<div class="canti ">
+					<a href="detailRe.html" >
+						<img src="images/litter.jpg" class="imagef " title="小菜 ">
+						<div class="ctit " title="小菜 ">小菜</div>
+					</a>
+				</div>
+				<div class="canti ">
+					<a href="detailRe.html">
+						<img src="images/food1.jpg" class="imagef " title="挂面鸭肠与千层肚 ">
+						<div class="ctit " title="挂面鸭肠与千层肚 ">挂面鸭肠与千层肚...</div>
+					</a>
+				</div>
+				<div class="canti">
+					<a href="#">
+						<img src="images/food2.jpg" class="imagef " title="黑豆腐 ">
+						<div class="ctit " title="黑豆腐 ">黑豆腐</div>
+					</a>
+				</div>
+				<div class="canti ">
+					<a href="#">
+						<img src="images/food4.jpg" class="imagef " title="笋片王 ">
+						<div class="ctit " title="笋片王 ">笋片王</div>
+					</a>
+				</div>
+			</div>
+			<div class="res_list ">
+				<h3 class="mb10 "><a href="detailRe.html" >香天下火锅</a></h3>
+				<p><font class="fccm ">推荐理由：</font>味道很正宗的重庆老火锅，也是全国连锁。在广州的朋友们如果想尝试传统的重庆老火锅推荐去这家体验。</p>
+				<p><font class="fccm ">地址：</font>广州市天河区 体育东路13号2层(近邮政储蓄银行)</p>
+				<p><font class="fccm ">人均：</font><font class="ff0 fsm ">￥100</font></p>
+				<div class="canti ">
+					<a href="detailRe.html" >
+						<img src="images/litter.jpg" class="imagef " title="小菜 ">
+						<div class="ctit " title="小菜 ">小菜</div>
+					</a>
+				</div>
+				<div class="canti ">
+					<a href="detailRe.html">
+						<img src="images/food1.jpg" class="imagef " title="挂面鸭肠与千层肚 ">
+						<div class="ctit " title="挂面鸭肠与千层肚 ">挂面鸭肠与千层肚...</div>
+					</a>
+				</div>
+				<div class="canti">
+					<a href="#">
+						<img src="images/food2.jpg" class="imagef " title="黑豆腐 ">
+						<div class="ctit " title="黑豆腐 ">黑豆腐</div>
+					</a>
+				</div>
+				<div class="canti ">
+					<a href="#">
+						<img src="images/food4.jpg" class="imagef " title="笋片王 ">
+						<div class="ctit " title="笋片王 ">笋片王</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="hot ">
+			<h1 class="title01" style="width: 300px;" ><b>本周热门餐厅</b></h1>
+			<div class="hot_res">
+				<div class="hot_image ">
+					<a href="# "><img src="images/shop.png" class="imagef "/></a>
+				</div>
+				
+				<a href="#" >蝶舍</a>
+				<span style="float: right;" >11赞 </span>
+			</div>
+			<div class="hot_res">
+				<div class="hot_image ">
+					<a href="# "><img src="images/shop.png" class="imagef "/></a>
+				</div>
+				
+				<a href="#" >蝶舍</a>
+				<span style="float: right;" >11赞 </span>
+			</div>
+			<div class="hot_res">
+				<div class="hot_image ">
+					<a href="# "><img src="images/shop.png" class="imagef "/></a>
+				</div>
+				
+				<a href="#" >蝶舍</a>
+				<span style="float: right;" >11赞 </span>
+			</div>
+			<div class="hot_res">
+				<div class="hot_image ">
+					<a href="# "><img src="images/shop.png" class="imagef "/></a>
+				</div>
+				
+				<a href="#" >蝶舍</a>
+				<span style="float: right;" >11赞 </span>
+			</div>
+			<div class="hot_res">
+				<div class="hot_image ">
+					<a href="# "><img src="images/shop.png" class="imagef "/></a>
+				</div>
+				
+				<a href="#" >蝶舍</a>
+				<span style="float: right;" >11赞 </span>
+			</div>
+			<div class="hot_res">
+				<div class="hot_image ">
+					<a href="# "><img src="images/shop.png" class="imagef "/></a>
+				</div>
+				
+				<a href="#" >蝶舍</a>
+				<span style="float: right;" >11赞 </span>
+			</div>
+			<div class="hot_res">
+				<div class="hot_image ">
+					<a href="# "><img src="images/shop.png" class="imagef "/></a>
+				</div>
+				
+				<a href="#" >蝶舍</a>
+				<span style="float: right;" >11赞 </span>
+			</div>
+			<div class="hot_res">
+				<div class="hot_image ">
+					<a href="# "><img src="images/shop.png" class="imagef "/></a>
+				</div>
+				
+				<a href="#" >蝶舍</a>
+				<span style="float: right;" >11赞 </span>
+			</div>
+			<div class="hot_res">
+				<div class="hot_image ">
+					<a href="# "><img src="images/shop.png" class="imagef "/></a>
+				</div>
+				
+				<a href="#" >蝶舍</a>
+				<span style="float: right;" >11赞 </span>
+			</div>
+			<div class="hot_res">
+				<div class="hot_image ">
+					<a href="# "><img src="images/shop.png" class="imagef "/></a>
+				</div>
+				
+				<a href="#" >蝶舍</a>
+				<span style="float: right;" >11赞 </span>
+			</div>
+			
+		</div>
+	</div>
+	<div class="foot01">
+		<p>关于食逸安·在食逸安工作·意见反馈·友情链接·菜谱大全·品牌馆</p>
+		<br />
+		<p>北京豆果信息技术有限公司 京ICP证111032号京公网安备11010102001133号 京网文【2018】6954-770号 食品流通许可证SP1101061510252413</p>
+	</div>
+</body>
+</html>

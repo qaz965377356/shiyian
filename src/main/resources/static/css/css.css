@@ -97,7 +97,7 @@ transition: opacity ease-in-out 200ms;}
 
 /*login*/
 .loginwrapper .wrap{ height:100%;}
-.loginbox{ width:350px; height:550px; position:absolute; right:0; bottom:0; background-color:#FFFFFF}
+.loginbox{ width:350px; height:450px; position:absolute;  right:0; background-color:#FFFFFF; bottom: 0;}
 .loginbox .hd{ height:30px; line-height:30px; text-align:center; color:#000000; font-size:30px; padding:35px 0;}
 
 .loginbox .ico{ width:63px; height:63px; display:inline-block; margin:8px 20px; text-indent:-999px; overflow:hidden;}

@@ -42,19 +42,47 @@
         });
     })
 </script>
+	<script type="text/javascript">
+        var islogin = getCookies('user_id');
+        if(islogin == '')
+        {
+            var comformvalue = getCookies('comfrom');
+            var is_showloginheads = getCookies('is_showlonginlead');
+            if(is_showloginheads != 'OK')
+            {
+                if(comformvalue == 1)
+                {
+                    setCookie('showNums',0);
+                    showloginhead('sina');
+                }
+                else if(comformvalue == 2)
+                {
+                    setCookie('showNums',0);
+                    showloginhead('qq');
+                }
+            }
+        }
+        var is_findfriend = getCookies('is_friendinfo');
+        if(is_findfriend != 'OK')
+        {
+            var cnick = "尤木";
+            var apitype = "";
+            if(apitype == 'sina' || apitype == 'douban')
+            {
+                //findFriendtips(apitype, cnick);
+                setcookie('is_friendinfo', 'OK', 0, '/', 'www.douguo.com');
+            }
+        }
+        function overshow(){$("#header_usermenu").show()}
+        function outshow(){$("#header_usermenu").hide()}
+	</script>
 </head>
 
 <body>
 	<div id="header">
-	<div class="head">
-        <div class="hlogo" ><a title="食逸安" href="/"><img src="images/414.png" width="45px" height="45px" style="line-height: 30px;"/></a></div>
-		<div class="tlogin" id="header_info" uid="0" pur="0">
-					<div class="toploginqs" id="topThirdLogin">
-        	<a href="#" class="topsmqq" rel="nofollow">QQ登录</a><a href="/api/sina_login" class="topsmsina" rel="nofollow">新浪微博</a>
-        </div>
-			<div class="slan"><a href="#" title="登录" rel="nofollow">登录</a><span class="pls prs">|</span><a href="/signup.html?time=1540204612" target="_blank" rel="nofollow" title="注册">注册</a><span class="pls prs"></span></div>
-        </div>
-	</div>
+		<div class="head">
+			<header  th:replace="header::navbar"></header>
+		</div>
     <div class="headnav">
     	<div class="secondmenu" id="secondmenu" style="display: none;">
     		<ul>
