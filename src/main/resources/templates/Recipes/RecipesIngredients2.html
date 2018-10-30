@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="食逸安" />
+	<meta name="description" content="食逸安" />
+	<title>食逸安</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/base.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/layui/css/layui.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/topmenu.css}"/>
+	<script type="text/javascript" th:src="@{/js/jquery-1.7.2.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/index.js}"></script>
+	<script type="text/javascript" th:src="@{/js/koala.min.1.5.js}"></script>
+	<script th:src="@{/layui/layui.js}"></script>
+<script>
+	//菜谱下拉菜单
+	$(function () {
+        $(function(){
+            $('#showscm').on('click',function(){
+                $('#secondmenu').toggle('slow');
+            })
+        })
+    })
+//	$(function () {
+//      $(function(){
+//          $('#secondmenu').on('mouseout',function(){
+//              $('#secondmenu').hide('slow');
+//          })
+//      })
+//  })
+</script>
+<script>
+	layui.use(['laypage', 'layer'], function() {
+        var laypage = layui.laypage
+            , layer = layui.layer;
+
+        //总页数低于页码总数
+        laypage.render({
+            elem: 'pagecut1'
+            , count: 50 //数据总数
+        });
+    })
+</script>
+</head>
+
+<body>
+	<div id="header">
+	<div class="head">
+        <div class="hlogo"><a title="食逸安" href="/"><img src="images/414.png" width="45px" height="45px" style="line-height: 30px;"/></a></div>
+		<div class="tlogin" id="header_info" uid="0" pur="0">
+					<div class="toploginqs" id="topThirdLogin">
+        	<a href="#" class="topsmqq" rel="nofollow">QQ登录</a><a href="/api/sina_login" class="topsmsina" rel="nofollow">新浪微博</a>
+        </div>
+			<div class="slan"><a href="#" title="登录" rel="nofollow">登录</a><span class="pls prs">|</span><a href="/signup.html?time=1540204612" target="_blank" rel="nofollow" title="注册">注册</a><span class="pls prs"></span></div>
+        </div>
+	</div>
+    <div class="headnav">
+    	<div class="secondmenu" id="secondmenu" style="display: none;">
+    		<ul>
+    			<li><a href="#">精选</a></li>
+    			<li><a href="#">分类</a></li>
+    			<li><a href="#">食材</a></li>
+    			<li><a href="#">排行榜</a></li>
+    		</ul>
+    	</div>
+    	<div class="hcent">
+            <div class="hnav fsm">
+                <ul>
+					<li class="ls lone"><a href="#" ><span>首页</span></a></li>
+                    <li class=" lone" id="showscm"><a href="#"><span>菜谱</span><s class="naww"></s></a></li>
+					<li class=" lone"><a href="#"><span>写食派</span></a></li>
+					<li class=" lone"><a href="#"><span>商城</span></a><div class="icnew"></div></li>
+					<li class="relative  lone"><a href="#"><span>主题站</span></a></li>
+                </ul>
+            </div>
+            <div class="search">
+                <form method="POST" id="searchForm" action="/search/recipe/" accept-charset="utf-8" onsubmit="document.charset='utf-8';return Search();">
+                    <input type="text" id="global_search_inpt" class="sput itqu" name="keywords" placeholder="搜索菜谱、菜单、食材、用户" x-webkit-speech="" x-webkit-grammar="bUIltin:search" lang="zh-CN" ;>
+                    <input type="submit" value="搜索" class="lib">
+                </form>
+            </div>
+            <div class="issue" onmouseover="$('#issueall').show()" onmouseout="$('#issueall').hide()">
+                <a href="javascript:void(0);" class="btniss">发布</a>
+				<div class="fallce r3" id="issueall" style="display: none; ">
+					<span class="armtop"> </span>
+						<p>
+							<a href="#" class="rt3" target="_blank" rel="nofollow">发布菜谱</a>
+						   <a href="#" target="_blank" rel="nofollow">创建菜单</a>
+						   <a href="#" target="_blank" rel="nofollow">上传美食日记</a>
+                        </p>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="main" class="clearfix">
+	<div class="caipunav r3 mb30 relative">
+		<ul class="pls">
+			<li class="lirdo"><a href="#"><span>精选</span></a></li>
+			<li class="lirdo"><a href="#"><span>分类</span></a></li>	
+			<li class="lirdo ls"><a href="#" ><span>食材</span></a></li>
+			<li class="lirdo "><a href="#"><span>菜单</span></a></li>
+			<li class=" "><a href="#"><span>排行榜</span></a></li>
+		</ul>
+ 	 </div>
+ 	 
+<div class="bkleft  mbl">
+			<div class="bshicai clearfix mb30">
+			<div class="scic mrl">
+                <a href="/dish/11194207" target="_blank">
+                <img src="images/60img.jpg" alt="排骨的做法大全">
+                </a>
+			</div>
+			<div class="scintro">
+                <h1 class="mb3">排骨</h1>
+                    <p><span>别名：</span>排骨、猪排</p>
+                    <p><span>热量：</span>278大卡（100克可食部分）</p>
+                    <p><span>分类：</span><a target="_blank" href="/shicai/65">肉类</a>, <a target="_blank" href="/shicai/65/17">猪</a></p>
+                	<p><span>适宜人群：</span>一般人都可食用 。适宜于气血不足，阴虚纳差者。</p>
+			</div>
+		</div>
+		<div class="cpsc r3 mbm clearfix">
+			<ul class="pls" >
+                <li class='lirdo '><a href='#'><span>做法大全</span></a></li>
+                <li class='lirdo ls'><a href='#'><span>营养功效</span></a></li>
+			</ul>
+		</div>
+	
+		<div id="shicaijieshao" class="bkdescri mb35">
+            <div class="bkmcot pv17 libsb">
+				<h3 class="pbm" id="jieshao"><a href="/ingredients/排骨/jieshao" target=_"blank">排骨的介绍</a></h3>
+				<p><p>排骨根据部位的不同，可分为多种，其中小排是指猪腹腔靠近肚腩部分的排骨，小排的肉层比较厚，并带有白色软骨。小排的上边是肋排和子排，子排是指腹腔连接脊背的部分，片下的排骨长达30厘米，呈三角形斜片状。肋骨是胸腔的片状排骨，肉层比较薄，肉质较瘦，口感较嫩，但是因为有一侧连接脊背，所以骨头比较粗。</p></p>
+			</div>
+						<div class="bkmcot pv17">
+				<h3 class="pbm" id="chengfen"><a href="/ingredients/排骨/foodvalue" target=_"blank">排骨的营养成分</a><span>(营养素含量/每100克)</span></h3>
+				<table border="0" cellspacing="0" cellpadding="0" class="inrtab pt15">
+					<tr>						<td width="200">硒(微克)</td>
+						<td width="125" class="abcright 0 lirdo">11.05</td>
+					 						<td width="200">钠(毫克)</td>
+						<td width="125" class="abcright 1 ">62.60</td>
+					</tr><tr>						<td width="200">磷(毫克)</td>
+						<td width="125" class="abcright 2 lirdo">135.00</td>
+					 						<td width="200">钾(毫克)</td>
+						<td width="125" class="abcright 3 ">230.00</td>
+					</tr><tr>						<td width="200">锰(毫克)</td>
+						<td width="125" class="abcright 0 lirdo">0.02</td>
+					 						<td width="200">铜(毫克)</td>
+						<td width="125" class="abcright 1 ">0.17</td>
+					</tr><tr>						<td width="200">锌(毫克)</td>
+						<td width="125" class="abcright 2 lirdo">3.36</td>
+					 						<td width="200">铁(毫克)</td>
+						<td width="125" class="abcright 3 ">1.40</td>
+					</tr><tr>						<td width="200">钙(毫克)</td>
+						<td width="125" class="abcright 0 lirdo">14.00</td>
+					 						<td width="200">镁(毫克)</td>
+						<td width="125" class="abcright 1 ">14.00</td>
+					</tr><tr>						<td width="200">胆固醇(毫克)</td>
+						<td width="125" class="abcright 2 lirdo">146</td>
+					 						<td width="200">烟酸(毫克)</td>
+						<td width="125" class="abcright 3 ">4.5</td>
+					</tr><tr>						<td width="200">核黄素(毫克)</td>
+						<td width="125" class="abcright 0 lirdo">0.16</td>
+					 						<td width="200">硫胺素(毫克)</td>
+						<td width="125" class="abcright 1 ">0.30</td>
+					</tr><tr>						<td width="200">胡罗卜素(微克)</td>
+						<td width="125" class="abcright 2 lirdo">一</td>
+					 						<td width="200">维生素E(毫克)</td>
+						<td width="125" class="abcright 3 ">0.11</td>
+					</tr><tr>						<td width="200">维生素C(毫克)</td>
+						<td width="125" class="abcright 0 lirdo">一</td>
+					 						<td width="200">维生素A(微克)</td>
+						<td width="125" class="abcright 1 ">5</td>
+					</tr><tr>						<td width="200">纤维素(克)</td>
+						<td width="125" class="abcright 2 lirdo">一</td>
+					 						<td width="200">蛋白质(克)</td>
+						<td width="125" class="abcright 3 ">16.7</td>
+					</tr><tr>						<td width="200">脂肪(克)</td>
+						<td width="125" class="abcright 0 lirdo">23.1</td>
+					 						<td width="200">碳水化合物(克)</td>
+						<td width="125" class="abcright 1 ">一</td>
+					</tr><tr>						<td width="200">热量(大卡)</td>
+						<td width="125" class="abcright 2 lirdo">278.00</td>
+					 						<td width="200">营养素</td>
+						<td width="125" class="abcright 3 ">含量(每100克)</td>
+					</tr>					<tr>
+						<td width="200"></td>
+						<td width="125" class="abcright lirsd"></td>
+						<td width="200"></td>
+						<td width="125" class="abcright"></td>
+					</tr>						
+				</table>
+			</div>
+									<div class="bkmcot pv17 libsb">
+				<h3 class="pbm" id="gongxiao"><a href="/ingredients/排骨/gongxiao" target=_"blank">排骨的功效与作用</a></h3>
+				<p><p>1．补钙</p>
+				<p>猪排骨含有大量磷酸钙、骨胶原、骨粘蛋白等，可为幼儿和老人提供钙质。</p>
+				<p>2．补肾养血，滋阴润燥；</p>
+				<p>主治热病伤津、消渴羸瘦、肾虚体弱、产后血虚、燥咳、便秘、补虚、滋阴、润燥、滋肝阴，润肌肤，利二便和止消渴。</p>
+				<p>3．补中益气</p>
+				<p>中医认为，排骨可以补中益气，无论是酱排骨，还是排骨汤，无论是红烧，还是爆炒，排骨都有着补中益气的作用。&nbsp;</p>
+				<p>4．滋养脾胃</p>
+				<p>排骨可以滋养脾胃，合理食用排骨，可以保健脾胃功能。</p>
+				<p>5．改善贫血</p>
+				<p>排骨可提供血红素（有机铁）和促进铁吸收的半胱氨酸，能改善缺铁性贫血。</p>
+				<p>6．强健筋骨</p>
+				<p>排骨富含铁、锌等微量元素，可以强健筋骨。</p>
+				<p>7．增强体力</p>
+				<p>排骨有着丰富的肌氨酸，可以增强体力，让人精力充沛。</p>
+				<p>8．补充营养</p>
+				<p>排骨富含蛋白质和脂肪，为人类提供优质蛋白质和必需的脂肪酸，可以补充人体所需的营养。</p>
+				<p>9．滋阴壮阳</p>
+				<p>中医认为，排骨可以滋阴壮阳，对于女性男性，都是极佳的食疗材料。</p></p>
+			</div>
+						<div class="bkmcot pv17 libsb">
+				<h3 class="pbm" id="jiazhi"><a href="/ingredients/排骨/yingyangjiazhi" target=_"blank">排骨的营养价值</a></h3>
+				<p><p>1．排骨含有优质蛋白质和必需的脂肪酸。排骨肉可提供血红素（有机铁）和促进铁吸收的半胱氨酸，能改善缺铁性贫血。</p>
+				<p>2．猪排骨除含蛋白质、脂肪、维生素外，还含有大量磷酸钙、骨胶原、骨粘蛋白等，可为幼儿和老人提供钙质。</p>
+				<p>适宜人群</p></p>
+			</div>
+				<div class="bkmcot pv17 libsb">
+				<h3 class="pbm" id="tiaoxuan"><a href="/ingredients/排骨/howtoselect" target=_"blank">如何挑选排骨</a></h3>
+				<p>在选购鲜排骨时，要求排骨肉颜色明亮呈红色，用手摸起来感觉肉质紧密，表面微干或略显湿润且不黏手的，按下后的凹印可迅速恢复，闻起来没有腥臭味的为佳。<br />
+				<p>&nbsp;</p></p>
+				</div>
+				<div class="bkmcot pv17">
+				<h3 class="pbm" id="chucun"><a href="/ingredients/排骨/howtostorage" target=_"blank">排骨的储存方法</a></h3>
+				<p>新鲜的排骨如果需要长时间保存，可把排骨剁成大小合适的块，放入沸水锅内焯烫一下，捞出用冷水过凉，控净水分，再加上少许绍酒调拌均匀，用保鲜袋包裹好，放冰箱冷冻室内冷冻保存，一般可保鲜1个月不变质。</p>
+				</div>
+				</div>
+		<div class="left mtl">
+
+		</div>
+        <div class="fcc left" >
+            你当前的位置：<a href="#" title="食逸安">食逸安</a> &gt <a href="#" title="菜谱">菜谱</a> &gt <a href="#" title="食材">食材</a>&gt排骨的营养功效        </div>
+	</div>
+
+	<!--<div class="bkright">
+		<div class="fsm">
+			<a href="https://www.douguo.com/shicai" target="_blank">全部食材>></a>
+		</div>
+			    <div class="mabelike clearfix mb20 mt25 left">
+                <h2>好吃的排骨做法</h2>
+                <ul>
+					<li><a href="#" title="板栗烧排骨 +金龙鱼舌尖美味 油你掌勺"target="_blank">板栗烧排骨 +金龙鱼</a></li>
+					<li><a href="#" title="电饭煲排骨焖饭「厨娘物语」"target="_blank">电饭煲排骨焖饭「厨娘</a></li>
+					<li><a href="#" title="豉香排骨芋头"target="_blank">豉香排骨芋头</a></li>
+					<li><a href="#" title="虾米排骨冬瓜汤"target="_blank">虾米排骨冬瓜汤</a></li>
+					<li><a href="#" title="蒜香烤排骨"target="_blank">蒜香烤排骨</a></li>
+					<li><a href="#" title="黄豆莲藕排骨汤"target="_blank">黄豆莲藕排骨汤</a></li>
+					<li><a href="#" title="#告别调料包#酱汁秘制排骨(Rib)"target="_blank">#告别调料包#酱汁秘</a></li>
+					<li><a href="#" title="红烧排骨炖冬瓜"target="_blank">红烧排骨炖冬瓜</a></li>
+					<li><a href="#" title="学会这招，一进门就能吃上排骨大餐！"target="_blank">学会这招，一进门就能</a></li>
+					<li><a href="#" title="排骨煲仔饭"target="_blank">排骨煲仔饭</a></li>
+				</ul>
+            </div>-->
+<div id="footer">
+</div>
+</div>
+</body>
+</html>
+

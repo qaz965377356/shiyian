@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/layui.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/admin.css}">
+    <!--<link rel="icon" href="/favicon.ico">-->
+    <title>管理后台</title>
+</head>
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header custom-header">
+            
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item slide-sidebar" lay-unselect>
+                    <a href="javascript:;" class="icon-font"><i class="ai ai-menufold"></i></a>
+                </li>
+            </ul>
+
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;" sec:authentication="name">小明</a>
+                    <dl class="layui-nav-child">
+						<dd><a href="">修改密码</a></dd>
+                        <dd><a href="">帮助中心</a></dd>
+                        <form id="logout_form" th:action="@{/logout}" method="post">
+                            <dd><a href="javascript:;" onclick="document:logout_form.submit();">退出</a></dd>
+                        </form>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+
+        <div class="layui-side custom-admin">
+            <div class="layui-side-scroll">
+
+                <div class="custom-logo">
+                    <img th:src="@{/assets/images/logo.png}" alt="logo"/>
+                    <h1>食逸安</h1>
+                </div>
+                <ul id="Nav" class="layui-nav layui-nav-tree">
+                    <th:block th:unless="${#lists.isEmpty(menus)}">
+                        <li th:each="menu,iterStat : ${menus}" th:class="${iterStat.count == 2 ? 'layui-nav-item layui-nav-itemed' : 'layui-nav-item layui-nav-tree'}">
+                            <th:block th:if="${menu.pid == 0}">
+                                <a href="javascript:;">
+                                    <i class="layui-icon">&#xe609;</i>
+                                    <em th:text="${menu.name}">系统设置</em>
+                                </a>
+                            </th:block>
+                            <dl class="layui-nav-child" th:each="submemu,iterStat2 : ${menus}">
+                                <th:block th:if="${submemu.pid == menu.id}">
+                                    <dd><a href="#" th:href="@{${submemu.url}}" th:text="${submemu.name}">系统管理员</a></dd>
+                                </th:block>
+                            </dl>
+                        </li>
+                    </th:block>
+                </ul>
+            </div>
+        </div>
+
+        <div class="layui-body">
+             <div class="layui-tab app-container" lay-allowClose="true" lay-filter="tabs">
+                <ul id="appTabs" class="layui-tab-title custom-tab"></ul>
+                <div id="appTabPage" class="layui-tab-content"></div>
+            </div>
+        </div>
+
+        <div class="layui-footer">
+            <p>© 2018 edwarder <a th:href="@{http://www.edwarder.com/}" target="_blank">Edwarder's Blog</a></p>
+        </div>
+
+        <div class="mobile-mask"></div>
+    </div>
+    <script type="text/javascript" th:src="@{/assets/layui.js}"></script>
+    <script type="text/javascript" th:src="@{/js/index.js}"></script>
+    <script type="text/javascript" th:src="@{/js/home.js}"></script>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript">
+        /*$(function () {
+            $("#Nav li").eq(1).find("dl").eq(0).find("dd a:eq(0)").click();
+        })*/
+        function a() {
+            $("#Nav li").eq(1).find("dl").eq(0).find("dd a:eq(0)").click();
+        }
+        $(document).ready(function () {
+            window.onload =a;
+        })
+    </script>
+</body>
+</html>

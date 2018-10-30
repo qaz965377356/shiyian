@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="食逸安" />
+	<meta name="description" content="食逸安" />
+	<title>食逸安</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/base.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/layui/css/layui.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/topmenu.css}"/>
+	<script type="text/javascript" th:src="@{/js/jquery-1.7.2.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/index.js}"></script>
+	<script type="text/javascript" th:src="@{/js/koala.min.1.5.js}"></script>
+	<script th:src="@{/layui/layui.js}"></script>
+<script>
+	//菜谱下拉菜单
+	$(function () {
+        $(function(){
+            $('#showscm').on('click',function(){
+                $('#secondmenu').toggle('slow');
+            })
+        })
+    })
+//	$(function () {
+//      $(function(){
+//          $('#secondmenu').on('mouseout',function(){
+//              $('#secondmenu').hide('slow');
+//          })
+//      })
+//  })
+</script>
+<script>
+	layui.use(['laypage', 'layer'], function() {
+        var laypage = layui.laypage
+            , layer = layui.layer;
+
+        //总页数低于页码总数
+        laypage.render({
+            elem: 'pagecut1'
+            , count: 50 //数据总数
+        });
+    })
+</script>
+</head>
+
+<body>
+	<div id="header">
+	<div class="head">
+        <div class="hlogo"><a title="食逸安" href="/"><img src="images/414.png" width="45px" height="45px" style="line-height: 30px;"/></a></div>
+		<div class="tlogin" id="header_info" uid="0" pur="0">
+					<div class="toploginqs" id="topThirdLogin">
+        	<a href="#" class="topsmqq" rel="nofollow">QQ登录</a><a href="/api/sina_login" class="topsmsina" rel="nofollow">新浪微博</a>
+        </div>
+			<div class="slan"><a href="#" title="登录" rel="nofollow">登录</a><span class="pls prs">|</span><a href="/signup.html?time=1540204612" target="_blank" rel="nofollow" title="注册">注册</a><span class="pls prs"></span></div>
+        </div>
+	</div>
+    <div class="headnav">
+    	<div class="secondmenu" id="secondmenu" style="display: none;">
+    		<ul>
+    			<li><a href="#">精选</a></li>
+    			<li><a href="#">分类</a></li>
+    			<li><a href="#">食材</a></li>
+    			<li><a href="#">排行榜</a></li>
+    		</ul>
+    	</div>
+    	<div class="hcent">
+            <div class="hnav fsm">
+                <ul>
+					<li class="ls lone"><a href="#" ><span>首页</span></a></li>
+                    <li class=" lone" id="showscm"><a href="#"><span>菜谱</span><s class="naww"></s></a></li>
+					<li class=" lone"><a href="#"><span>写食派</span></a></li>
+					<li class=" lone"><a href="#"><span>商城</span></a><div class="icnew"></div></li>
+					<li class="relative  lone"><a href="#"><span>主题站</span></a></li>
+                </ul>
+            </div>
+            <div class="search">
+                <form method="POST" id="searchForm" action="/search/recipe/" accept-charset="utf-8" onsubmit="document.charset='utf-8';return Search();">
+                    <input type="text" id="global_search_inpt" class="sput itqu" name="keywords" placeholder="搜索菜谱、菜单、食材、用户" x-webkit-speech="" x-webkit-grammar="bUIltin:search" lang="zh-CN" ;>
+                    <input type="submit" value="搜索" class="lib">
+                </form>
+            </div>
+            <div class="issue" onmouseover="$('#issueall').show()" onmouseout="$('#issueall').hide()">
+                <a href="javascript:void(0);" class="btniss">发布</a>
+				<div class="fallce r3" id="issueall" style="display: none; ">
+					<span class="armtop"> </span>
+						<p>
+							<a href="#" class="rt3" target="_blank" rel="nofollow">发布菜谱</a>
+						   <a href="#" target="_blank" rel="nofollow">创建菜单</a>
+						   <a href="#" target="_blank" rel="nofollow">上传美食日记</a>
+                        </p>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="main" class="clearfix">
+	<div class="caipunav r3 mb30 relative">
+		<ul class="pls">
+			<li class="lirdo"><a href="#"><span>精选</span></a></li>
+			<li class="lirdo"><a href="#"><span>分类</span></a></li>	
+			<li class="lirdo"><a href="#" ><span>食材</span></a></li>
+			<li class="lirdo"><a href="#"><span>菜单</span></a></li>
+			<li class=" ls"><a href="#"><span>排行榜</span></a></li>
+		</ul>
+ 	 </div>
+ 	<div class="cprank clearfix">
+		<div class="rank2 r3 mrl">
+			<h2 class="rt3">热门菜谱榜</h2>
+			<ul>
+				<li class="librk">
+					<span><em class="topthre">1</em></span>
+						<a class="prs" href="" target="_blank" title="荷叶蒸鸡 #舌尖美味  油你掌勺#">荷叶蒸鸡 #舌尖美味  油你掌勺#</a>
+							by <a class="user" href="" target="_blank" title="快乐小妖">快乐小妖</a><div class="favnum">997收藏</div>
+				</li>
+				<li class="librk">
+					<span><em class="topthre">2</em></span>
+						<a class="prs" href="" target="_blank" title="荷叶蒸鸡 #舌尖美味  油你掌勺#">荷叶蒸鸡 #舌尖美味  油你掌勺#</a>
+							by <a class="user" href="" target="_blank" title="快乐小妖">快乐小妖</a><div class="favnum">997收藏</div>
+				</li>
+				<li class="librk">
+					<span><em class="topthre">3</em></span>
+						<a class="prs" href="" target="_blank" title="荷叶蒸鸡 #舌尖美味  油你掌勺#">荷叶蒸鸡 #舌尖美味  油你掌勺#</a>
+							by <a class="user" href="" target="_blank" title="快乐小妖">快乐小妖</a><div class="favnum">997收藏</div>
+				</li>
+				<li class="librk">
+					<span>4</span>
+						<a class="prs" href="" target="_blank" title="荷叶蒸鸡 #舌尖美味  油你掌勺#">荷叶蒸鸡 #舌尖美味  油你掌勺#</a>
+							by <a class="user" href="" target="_blank" title="快乐小妖">快乐小妖</a><div class="favnum">997收藏</div>
+				</li>
+				<li class="librk">
+					<span>5</span>
+						<a class="prs" href="" target="_blank" title="荷叶蒸鸡 #舌尖美味  油你掌勺#">荷叶蒸鸡 #舌尖美味  油你掌勺#</a>
+							by <a class="user" href="" target="_blank" title="快乐小妖">快乐小妖</a><div class="favnum">997收藏</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="rangkright">
+		<div class="zbangh bbranlin">
+			<a href="https://www.douguo.com/top">全部榜单</a>
+		</div>
+		<div class="rankli bbranlin">
+			<h3>热门总榜</h3>
+			<ul>
+				<li><a href="https://www.douguo.com/top/remencaipu" title="热门菜谱榜" class="ona" >热门菜谱榜</a></li>
+				<li><a href="https://www.douguo.com/top/remencaidan" title="热门菜单榜"  >热门菜单榜</a></li>
+				<li><a href="https://www.douguo.com/top/remenyonghu" title="热门用户榜"  >热门用户榜</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="fcc ptm left" style="width:940px">
+		你当前的位置：<a href="https://www.douguo.com/" title="食逸安">食逸安</a> &gt; <a href=https://www.douguo.comm/caipu" title="菜谱">菜谱</a> &gt; 排行榜
+	</div>
+</div>
+<div id="footer">
+	
+</div>
+</body>
+</html>
+

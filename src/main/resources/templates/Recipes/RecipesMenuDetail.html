@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="食逸安" />
+	<meta name="description" content="食逸安" />
+	<title>食逸安</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/base.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/layui/css/layui.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/topmenu.css}"/>
+	<script type="text/javascript" th:src="@{/js/jquery-1.7.2.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/index.js}"></script>
+	<script type="text/javascript" th:src="@{/js/koala.min.1.5.js}"></script>
+	<script th:src="@{/layui/layui.js}"></script>
+<script>
+	//菜谱下拉菜单
+	$(function () {
+        $(function(){
+            $('#showscm').on('click',function(){
+                $('#secondmenu').toggle('slow');
+            })
+        })
+    })
+//	$(function () {
+//      $(function(){
+//          $('#secondmenu').on('mouseout',function(){
+//              $('#secondmenu').hide('slow');
+//          })
+//      })
+//  })
+</script>
+<script>
+	layui.use(['laypage', 'layer'], function() {
+        var laypage = layui.laypage
+            , layer = layui.layer;
+
+        //总页数低于页码总数
+        laypage.render({
+            elem: 'pagecut1'
+            , count: 50 //数据总数
+        });
+    })
+</script>
+</head>
+
+<body>
+	<div id="header">
+	<div class="head">
+        <div class="hlogo" ><a title="食逸安" href="/"><img src="images/414.png" width="45px" height="45px" style="line-height: 30px;"/></a></div>
+		<div class="tlogin" id="header_info" uid="0" pur="0">
+					<div class="toploginqs" id="topThirdLogin">
+        	<a href="#" class="topsmqq" rel="nofollow">QQ登录</a><a href="/api/sina_login" class="topsmsina" rel="nofollow">新浪微博</a>
+        </div>
+			<div class="slan"><a href="#" title="登录" rel="nofollow">登录</a><span class="pls prs">|</span><a href="/signup.html?time=1540204612" target="_blank" rel="nofollow" title="注册">注册</a><span class="pls prs"></span></div>
+        </div>
+	</div>
+    <div class="headnav">
+    	<div class="secondmenu" id="secondmenu" style="display: none;">
+    		<ul>
+    			<li><a href="#">精选</a></li>
+    			<li><a href="#">分类</a></li>
+    			<li><a href="#">食材</a></li>
+    			<li><a href="#">排行榜</a></li>
+    		</ul>
+    	</div>
+    	<div class="hcent">
+            <div class="hnav fsm">
+                <ul>
+					<li class="ls lone"><a href="#" ><span>首页</span></a></li>
+                    <li class=" lone" id="showscm"><a href="#"><span>菜谱</span><s class="naww"></s></a></li>
+					<li class=" lone"><a href="#"><span>写食派</span></a></li>
+					<li class=" lone"><a href="#"><span>商城</span></a><div class="icnew"></div></li>
+					<li class="relative  lone"><a href="#"><span>主题站</span></a></li>
+                </ul>
+            </div>
+            <div class="search">
+                <form method="POST" id="searchForm" action="/search/recipe/" accept-charset="utf-8" onsubmit="document.charset='utf-8';return Search();">
+                    <input type="text" id="global_search_inpt" class="sput itqu" name="keywords" placeholder="搜索菜谱、菜单、食材、用户" x-webkit-speech="" x-webkit-grammar="bUIltin:search" lang="zh-CN" ;>
+                    <input type="submit" value="搜索" class="lib">
+                </form>
+            </div>
+            <div class="issue" onmouseover="$('#issueall').show()" onmouseout="$('#issueall').hide()">
+                <a href="javascript:void(0);" class="btniss">发布</a>
+				<div class="fallce r3" id="issueall" style="display: none; ">
+					<span class="armtop"> </span>
+						<p>
+							<a href="#" class="rt3" target="_blank" rel="nofollow">发布菜谱</a>
+						   <a href="#" target="_blank" rel="nofollow">创建菜单</a>
+						   <a href="#" target="_blank" rel="nofollow">上传美食日记</a>
+                        </p>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="main" class="clearfix">
+		<div class="meview"  style="overflow:hidden;">
+		    			<div class="melef clearfix">
+				<h1 id="page_cm_id" ctype="caidan" val ="841863" class="mbs">备战团圆饭 美味新一年</h1>
+				<span>创建时间：2016-01-26</span><span class="mlm">最后更新：2018-10-13</span>
+				<span class="mlm">浏览：35366</span><span class="mlm">收藏:<font class='collectsnum'>89</font></span>
+</div>
+<div class="meright clearfix">
+			<button class="layui-btn layui-btn-danger">收藏菜单</button>
+			</div>
+			<div class="mjie mtm clearfix litto litbd mb20">
+				<p>菜单简介</p>
+			</div>			
+		</div>
+		<div class="mecai">
+				
+				    <div class="left">
+				    	<table cellspacing="20px">
+							<tr>
+								<td>
+									<div class="keone r3  relative">
+									<a class="" href="https://www.douguo.com/cookbook/1096363.html" target="_blank" title="这道菜谱有视频哟"></a>	
+									<a href="https://www.douguo.com/cookbook/1096363.html" target="_blank"><img src="images/01.jpg" original="https://cp1.douguo.com/upload/caiku/c/4/b/200_c4384853514cc85ace5bd50e6412daeb.jpg" height="200" width="200" alt="梅菜扣肉"></a>
+									<div class="imh3">
+			                            <a href="https://www.douguo.com/cookbook/1096363.html" target="_blank">
+			                                                                梅菜扣肉</a>
+			                        </div>
+									<span>By 斯佳丽</span>
+									<p>入选理由：肉滑溜醇香，汁黏稠鲜美，软烂醇香</p>
+									</div>
+								</td>
+								<td>
+									<div class="keone r3  relative">
+									<a class="" href="https://www.douguo.com/cookbook/1096363.html" target="_blank" title="这道菜谱有视频哟"></a>	
+									<a href="https://www.douguo.com/cookbook/1096363.html" target="_blank"><img src="https://www.douguo.com/static/img/blank.gif" original="https://cp1.douguo.com/upload/caiku/c/4/b/200_c4384853514cc85ace5bd50e6412daeb.jpg" height="200" width="200" alt="梅菜扣肉"></a>
+									<div class="imh3">
+			                            <a href="https://www.douguo.com/cookbook/1096363.html" target="_blank">
+			                                                                梅菜扣肉</a>
+			                        </div>
+									<span>By 斯佳丽</span>
+									<p>入选理由：肉滑溜醇香，汁黏稠鲜美，软烂醇香</p>
+									</div>
+								</td>
+								<td>
+									<div class="keone r3  relative">
+									<a class="" href="https://www.douguo.com/cookbook/1096363.html" target="_blank" title="这道菜谱有视频哟"></a>	
+									<a href="https://www.douguo.com/cookbook/1096363.html" target="_blank"><img src="https://www.douguo.com/static/img/blank.gif" original="https://cp1.douguo.com/upload/caiku/c/4/b/200_c4384853514cc85ace5bd50e6412daeb.jpg" height="200" width="200" alt="梅菜扣肉"></a>
+									<div class="imh3">
+			                            <a href="https://www.douguo.com/cookbook/1096363.html" target="_blank">
+			                                                                梅菜扣肉</a>
+			                        </div>
+									<span>By 斯佳丽</span>
+									<p>入选理由：肉滑溜醇香，汁黏稠鲜美，软烂醇香</p>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="keone r3  relative">
+									<a class="" href="https://www.douguo.com/cookbook/1096363.html" target="_blank" title="这道菜谱有视频哟"></a>	
+									<a href="https://www.douguo.com/cookbook/1096363.html" target="_blank"><img src="images/01.jpg" original="https://cp1.douguo.com/upload/caiku/c/4/b/200_c4384853514cc85ace5bd50e6412daeb.jpg" height="200" width="200" alt="梅菜扣肉"></a>
+									<div class="imh3">
+			                            <a href="https://www.douguo.com/cookbook/1096363.html" target="_blank">
+			                                                                梅菜扣肉                            </a>
+			                        </div>
+									<span>By 斯佳丽</span>
+									<p>入选理由：肉滑溜醇香，汁黏稠鲜美，软烂醇香</p>
+									</div>
+								</td>
+								<td>
+									<div class="keone r3  relative">
+									<a class="" href="https://www.douguo.com/cookbook/1096363.html" target="_blank" title="这道菜谱有视频哟"></a>	
+									<a href="https://www.douguo.com/cookbook/1096363.html" target="_blank"><img src="https://www.douguo.com/static/img/blank.gif" original="https://cp1.douguo.com/upload/caiku/c/4/b/200_c4384853514cc85ace5bd50e6412daeb.jpg" height="200" width="200" alt="梅菜扣肉"></a>
+									<div class="imh3">
+			                            <a href="https://www.douguo.com/cookbook/1096363.html" target="_blank">
+			                                                                梅菜扣肉                            </a>
+			                        </div>
+									<span>By 斯佳丽</span>
+									<p>入选理由：肉滑溜醇香，汁黏稠鲜美，软烂醇香</p>
+									</div>
+								</td>
+								<td>
+									<div class="keone r3  relative">
+									<a class="" href="https://www.douguo.com/cookbook/1096363.html" target="_blank" title="这道菜谱有视频哟"></a>	
+									<a href="https://www.douguo.com/cookbook/1096363.html" target="_blank"><img src="https://www.douguo.com/static/img/blank.gif" original="https://cp1.douguo.com/upload/caiku/c/4/b/200_c4384853514cc85ace5bd50e6412daeb.jpg" height="200" width="200" alt="梅菜扣肉"></a>
+									<div class="imh3">
+			                            <a href="https://www.douguo.com/cookbook/1096363.html" target="_blank">
+			                                                                梅菜扣肉                            </a>
+			                        </div>
+									<span>By 斯佳丽</span>
+									<p>入选理由：肉滑溜醇香，汁黏稠鲜美，软烂醇香</p>
+									</div>
+								</td>
+							</tr>
+						</table>
+				            			
+			</div>	 
+					   </div>
+			   <div class="meketor">
+	<div class="cpauthor clearfix pbs bbe7">
+		<div class="auhead">
+			<a href="#" rel="nofollow" target="_blank" title='斧盾' ><img src="images/01.jpg" original="https://i1.douguo.com/upload/photo/7/6/b/70_u04807683160128164642.jpg" height="70" width="70" alt="岳壹壹也是月蛇蛇"></a>
+		</div>
+		<h4><a href="#" target="_blank">斧盾</a></h4>
+		<font class="ic_female">♂</font><span>江西 宜春市</span>
+	<a id="guanzhu4778691" title="+关注" class="newgzz careadd2 trgz dblok" userid="4778691" href="javascript:void(0)">+关注</a>	</div>
+		<div class="auintro bbe7 clearfix">
+		<span class="sto"></span><p class="itrp">画他妈的页面！<span class="sbo"> </span></p>
+	</div>
+		<div class="bbe7 clearfix mtm pbm mb25">
+		<div class="ifans"><a href="/u/u04807683160128/recipe" rel="nofollow" class="pnuber">2</a> 菜谱</div>
+		<div class="ifans ble7"><a href="/u/u04807683160128/fans" rel="nofollow" class="pnuber">521</a> 粉丝</div>
+	</div>
+	<div class='collectUser'>
+	<div class="favper mb10 clearfix">
+	<h3 class="mb10">他们收藏了这个菜单<a href="https://www.douguo.com/caipu/caidan/collects/841863"  >(<font class="collectsnum">1</font>)</a></h3>
+	
+	<div class='collectlist cahead clearfix' >
+	  
+ 	    <a id="cuid_19342272" rel="nofollow" title="斧盾猛男" href="#" target="_blank">
+			<img alt="斧盾猛男" src="images/banner1.png" height="32" width="32">
+		</a>
+	  
+   </div>
+   <hr />
+	</div>
+	</div>	
+	    你当前的位置：<a href="#" title="食逸安">食逸安</a> &gt <a href="#" title="菜谱">菜谱</a> &gt <a href="#" title="菜单">菜单</a> &gt 备战团圆饭 美味新一年         </div>
+	</div>
+	<div id="footer">
+	
+</div>
+
+</body>
+<style>
+	.left table td{
+		margin: 20px 10px;
+		padding: 20px 10px;
+	}
+</style>
+</html>
+
