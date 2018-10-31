@@ -18,6 +18,6 @@ public class IndexController {
 
     @RequestMapping("/test")
     public String test(){
-        return "/UserCenter/jifen";
+        return "/UserCenter/login";
     }
 }

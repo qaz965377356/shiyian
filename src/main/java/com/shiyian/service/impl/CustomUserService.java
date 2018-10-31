@@ -3,6 +3,7 @@ package com.shiyian.service.impl;
 import com.shiyian.entity.SysRole;
 import com.shiyian.entity.SysUser;
 import com.shiyian.mapper.SysUserMapper;
+import com.shiyian.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
@@ -26,19 +27,13 @@ public class CustomUserService implements UserDetailsService { //自定义UserDe
 
     @Autowired
     private SysUserMapper sysUserMapper;
-
+    @Autowired
+    private UserMapper userMapper;
     public UserDetails loadUserByUsername(String username) {
-        SysUser user = sysUserMapper.findUserByName(username);
+        com.shiyian.entity.User user = userMapper.findUserByName(username);
         if (user != null) {
-            List<SysRole> roles = user.getRoles();
 
             List<GrantedAuthority> grantedAuthorities = new ArrayList <>();
-            for (SysRole role : roles) {
-                if (role != null && role.getName()!=null) {
-                    GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(role.getName());
-                    grantedAuthorities.add(grantedAuthority);
-                }
-            }
             return new User(user.getUsername(), user.getPassword(), grantedAuthorities);
         } else {
             throw new UsernameNotFoundException("admin: " + username + " do not exist!");

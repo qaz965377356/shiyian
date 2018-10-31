@@ -140,6 +140,7 @@
                     <img src="images/12.jpg" alt="排骨的做法大全">
                 </a>
 			</div>
+				<input type="text" th:value="${food.id}" style="display: none" id="foodid" name="foodid">
 			<div class="scintro">
 				<h1 class="mb3" th:text="${food.name}">排骨</h1>
                 <p><span>别名：</span> <th:block th:text="${food.othername}"> 排骨、猪排</th:block></p>
@@ -153,8 +154,8 @@
 		</div>
 		<div class="cpsc r3 mbm clearfix">
 			<ul class="pls">
-				<li class='lirdo ls'><a href='#'><span>做法大全</span></a></li>
-				<li class='lirdo '><a href='#'><span>营养功效</span></a></li>
+				<li class='lirdo ls'><a th:href="@{/recipes/noun/food(id=${food.id})}"><span>做法大全</span></a></li>
+				<li class='lirdo '><a th:href="@{/recipes/noun/food2(id=${food.id})}"><span>营养功效</span></a></li>
 			</ul>
 		</div>
         <div class="sczhot">
@@ -205,7 +206,7 @@
 	</div>
 	<div class="bkright">
 		<div class="fsm">
-			<a href="#" target="_blank">全部食材>></a>
+			<a th:href="@{/recipes/noun}" target="_blank">全部食材>></a>
 		</div>
         <div class="shiclei">
             <h3><a href="/shicai/" target="_blank"></a></h3>

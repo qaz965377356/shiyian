@@ -22,13 +22,38 @@
             })
         })
     })
-//	$(function () {
-//      $(function(){
-//          $('#secondmenu').on('mouseout',function(){
-//              $('#secondmenu').hide('slow');
-//          })
-//      })
-//  })
+    var islogin = getCookies('user_id');
+    if(islogin == '')
+    {
+        var comformvalue = getCookies('comfrom');
+        var is_showloginheads = getCookies('is_showlonginlead');
+        if(is_showloginheads != 'OK')
+        {
+            if(comformvalue == 1)
+            {
+                setCookie('showNums',0);
+                showloginhead('sina');
+            }
+            else if(comformvalue == 2)
+            {
+                setCookie('showNums',0);
+                showloginhead('qq');
+            }
+        }
+    }
+    var is_findfriend = getCookies('is_friendinfo');
+    if(is_findfriend != 'OK')
+    {
+        var cnick = "尤木";
+        var apitype = "";
+        if(apitype == 'sina' || apitype == 'douban')
+        {
+            //findFriendtips(apitype, cnick);
+            setcookie('is_friendinfo', 'OK', 0, '/', 'www.douguo.com');
+        }
+    }
+    function overshow(){$("#header_usermenu").show()}
+    function outshow(){$("#header_usermenu").hide()}
 </script>
 <script>
 	layui.use(['laypage', 'layer'], function() {
@@ -46,15 +71,9 @@
 
 <body>
 	<div id="header">
-	<div class="head">
-        <div class="hlogo"><a title="食逸安" href="/"><img src="images/414.png" width="45px" height="45px" style="line-height: 30px;"/></a></div>
-		<div class="tlogin" id="header_info" uid="0" pur="0">
-					<div class="toploginqs" id="topThirdLogin">
-        	<a href="#" class="topsmqq" rel="nofollow">QQ登录</a><a href="/api/sina_login" class="topsmsina" rel="nofollow">新浪微博</a>
-        </div>
-			<div class="slan"><a href="#" title="登录" rel="nofollow">登录</a><span class="pls prs">|</span><a href="/signup.html?time=1540204612" target="_blank" rel="nofollow" title="注册">注册</a><span class="pls prs"></span></div>
-        </div>
-	</div>
+		<div class="head">
+			<header  th:replace="header::navbar"></header>
+		</div>
     <div class="headnav">
     	<div class="secondmenu" id="secondmenu" style="display: none;">
     		<ul>
@@ -112,18 +131,21 @@
                 <img src="images/60img.jpg" alt="排骨的做法大全">
                 </a>
 			</div>
-			<div class="scintro">
-                <h1 class="mb3">排骨</h1>
-                    <p><span>别名：</span>排骨、猪排</p>
-                    <p><span>热量：</span>278大卡（100克可食部分）</p>
-                    <p><span>分类：</span><a target="_blank" href="/shicai/65">肉类</a>, <a target="_blank" href="/shicai/65/17">猪</a></p>
-                	<p><span>适宜人群：</span>一般人都可食用 。适宜于气血不足，阴虚纳差者。</p>
-			</div>
+				<div class="scintro">
+					<h1 class="mb3" th:text="${food.name}">排骨</h1>
+					<p><span>别名：</span> <th:block th:text="${food.othername}"> 排骨、猪排</th:block></p>
+					<p><span>热量：</span></p><th:block th:text="${food.heat}">278大卡</th:block>  (100克可食部分)
+					<p><span>适宜人群：</span><th:block th:text="${food.suitable}">一般人都可食用 。适宜于气血不足，阴虚纳差者。</th:block></p>
+					<!-- Baidu Button BEGIN -->
+					<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare pts" style="float:right;">
+						<span class="bds_more inblok" style="display: inline-block;"></span>
+					</div>
+				</div>
 		</div>
 		<div class="cpsc r3 mbm clearfix">
-			<ul class="pls" >
-                <li class='lirdo '><a href='#'><span>做法大全</span></a></li>
-                <li class='lirdo ls'><a href='#'><span>营养功效</span></a></li>
+			<ul class="pls">
+				<li class='lirdo '><a th:href="@{/recipes/noun/food(id=${food.id})}"><span>做法大全</span></a></li>
+				<li class='lirdo ls'><a th:href="@{/recipes/noun/food2(id=${food.id})}"><span>营养功效</span></a></li>
 			</ul>
 		</div>
 	

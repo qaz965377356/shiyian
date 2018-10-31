@@ -12,30 +12,33 @@
 <body>
 <div class="head">
   <div class="wrap clearfix">
-  	<a href="index.html" class="logo indent">logo</a>
-    <img src="images/414.png" align="left" width="60" height="60" />
+    <img th:src="@{/images/414.png}" align="left" width="60" height="60" />
     <div class="hanzi">食逸安美食</span></div>
   </div>
 </div>
 <div class="loginwrapper">
   <div class="wrap pr">
-  	<img th:src="@{images/414.png}"  style="padding:15px 200px  ;"/>
+  	<img th:src="@{/images/414.png}"  style="padding:15px 200px  ;"/>
     <div class="loginbox">
       <h1 class="hd">用户登录</h1>
       <div class="boxbd">
+        <form th:action="@{/user/loginpage}" method="post">
         <label class="label">
-          <input type="text" name="user" value="" class="loginipt user">
-          <span class="text">请输入您的手机号/邮箱</span>
+          <input type="text" name="username" value="" class="loginipt user" placeholder="请输入您的账号">
         </label>
         <label class="label">
-          <input type="password" name="pwd" value="" class="loginipt pwd">
-          <span class="text">请输入您的密码</span>
+          <input type="password" name="password" value="" class="loginipt pwd" placeholder="请输入您的密码">
         </label>
-        <button type="submit" name="login" value="" class="button btn-login" onClick="location.href='/mem'">登录</button>
-        <p class="mt20"><label for="remember"><input name="" type="checkbox" id="remember" value="" checked> <font color="#000000">记住我</font></label><a href="/forgot" class="fr"><font color="#000000"> 忘记密码？</font></a></p>
-        <p class="mt10 tr"><font color="#000000">还没有账号？</font><a th:href="@{/reg}" class="o">注册</a></p>
+        <button type="submit" class="button btn-login">登录</button>
+        <p class="mt20"><label for="remember"><input name="" type="checkbox" id="remember" value="" checked> <font color="#000000">记住我</font></label><p href="/forgot" class="fr">
+
+        <a th:href="@{/reg}" class="o">忘记密码</a>
+      </p>
+        <span class="mt10 tr" style="padding-left: 100px"><font color="#000000">还没有账号？</font><a th:href="@{/reg}" class="o">注册</a></span>
+        </form>
       </div>
-    </div>    
+
+    </div>
   </div>
 </div>
 <div style="height: 100px"></div>

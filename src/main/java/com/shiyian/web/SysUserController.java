@@ -27,10 +27,7 @@ public class SysUserController {
     @Autowired
     private SysRoleService sysRoleService;
 
-    @RequestMapping("/login")
-    public  String login(){
-        return "Background/login";
-    }
+
 
     /**
      * 获取用户列表

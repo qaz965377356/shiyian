@@ -34,4 +34,11 @@ public class RecipesController {
         model.addAttribute("food",food);
         return "/Recipes/RecipesIngredients";
     }
+    @RequestMapping("/noun/food2")
+    public String foodDetail2(Integer id,Model model){
+        Food food=foodService.getFoodById(id);
+        System.out.println(food);
+        model.addAttribute("food",food);
+        return "/Recipes/RecipesIngredients2";
+    }
 }

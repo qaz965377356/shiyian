@@ -33,13 +33,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/js/**","/assets/**","/article/**","/css/**","/images/**","/layui/**","/").permitAll()
+                .antMatchers("/js/**","/assets/**","/article/**","/css/**","/images/**","/layui/**","/","/user/reg").permitAll()
                 .anyRequest().authenticated() //任何请求,登录后可以访问
                 .and()
                 .formLogin()
-                .loginPage("/bg/user/login")
-                .defaultSuccessUrl("/bg/") //登录成功的默认跳转路径
-                .failureUrl("/bg/user/login?error") //登录失败的跳转路径
+                .loginPage("/user/loginpage")
+                .defaultSuccessUrl("/")
+                .successForwardUrl("/") //登录成功的默认跳转路径
+                .failureUrl("/user/loginpage?error") //登录失败的跳转路径
                 .permitAll() //登录页面用户任意访问
                 .and()
                 .logout().permitAll(); //注销行为任意访问
